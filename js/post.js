@@ -21,38 +21,45 @@ const comments = [
 
 const commentSection = document.querySelector('.comment-section');
 
-for (let i = 0; i < comments.length; i++) {
-    const newComment = document.createElement('div');
-    newComment.className = "new-comment";
+function populateComments() {
+    if (comments.length != 0) {
+        for (let i = 0; i < comments.length; i++) {
+            const newComment = document.createElement('div');
+            newComment.className = "new-comment";
 
-    const commentHeader = document.createElement('div');
-    commentHeader.className = "comment-header";
-    const commentUser = document.createElement('div');
-    commentUser.className = "comment-user";
-    const commentUserPic = document.createElement('img');
+            const commentHeader = document.createElement('div');
+            commentHeader.className = "comment-header";
+            const commentUser = document.createElement('div');
+            commentUser.className = "comment-user";
+            const commentUserPic = document.createElement('img');
 
-    const commentInfo = document.createElement('div');
-    commentInfo.className = "comment-info";
-    const commentDetails = document.createElement('div');
-    commentDetails.className = "comment-details";
-    const commentText = document.createElement('div');
-    commentText.className = "comment-text";
-    const commentDate = document.createElement('div');
-    commentDate.className = "comment-date";
-    const commentUsername = document.createElement('div');
-    commentUsername.className = "comment-username";
+            const commentInfo = document.createElement('div');
+            commentInfo.className = "comment-info";
+            const commentDetails = document.createElement('div');
+            commentDetails.className = "comment-details";
+            const commentText = document.createElement('div');
+            commentText.className = "comment-text";
+            const commentDate = document.createElement('div');
+            commentDate.className = "comment-date";
+            const commentUsername = document.createElement('div');
+            commentUsername.className = "comment-username";
 
-    commentDetails.append(commentUsername, commentDate)
-    commentInfo.append(commentDetails, commentText);
-    commentUser.append(commentUserPic);
-    commentHeader.append(commentUser);
-    newComment.append(commentHeader, commentInfo);
-    commentSection.append(newComment);
+            commentDetails.append(commentUsername, commentDate)
+            commentInfo.append(commentDetails, commentText);
+            commentUser.append(commentUserPic);
+            commentHeader.append(commentUser);
+            newComment.append(commentHeader, commentInfo);
+            commentSection.append(newComment);
 
-    commentText.textContent = comments[i].text;
-    commentDate.textContent = comments[i].date;
-    commentUsername.textContent = comments[i].username;
-    commentUserPic.src = comments[i].img;
-};
+            commentText.textContent = comments[i].text;
+            commentDate.textContent = comments[i].date;
+            commentUsername.textContent = comments[i].username;
+            commentUserPic.src = comments[i].img;
+        };
+    } else {
+        commentSection.innerHTML = `<p>There is no comments on this post yet...</p>
+                                    <p>Be the first one to wrote something!</p>`;
+    };
+}
 
-console.log(comments);
+populateComments();
