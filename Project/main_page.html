@@ -117,12 +117,15 @@
             font-size: 16px;
             border: none;
          }
+         .third_row_sort {
+          position: relative;
+  display: inline-block;
+         }
          .dropdown-content {
             display: none;
             position: absolute;
             background-color: #f1f1f1;
             min-width: 160px;
-            left: 0;
             right: auto;
             z-index: 1;
          }
@@ -132,8 +135,8 @@
             background-color: #f1f1f1;
             min-width: 160px;
             right: 0;
-            left: auto;
             z-index: 1;
+            float: right;
          }
          .dropdown-content a {
             float: none;
@@ -176,7 +179,6 @@
             position: absolute;
             background-color: #f1f1f1;
             min-width: 160px;
-            left: 0;
             right: auto;
             z-index: 1;
          }
@@ -191,12 +193,12 @@
          .dropdown-content3 a:hover {
             background-color: #ccc;
          }
-         .second_row:hover .dropdown-content3 {
+          .second_row_dropmenu:hover .dropdown-content3 {
             display: block;
          }
          /* gallery item with buttons and image */
          .fourth_row {
-            display: flex;
+            display: flexbox;
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
@@ -206,9 +208,7 @@
          }
          .gallery-item {
             position: relative;
-            
             flex: 1 0 22rem;
-            margin: 1rem;
             width: 100%;
             max-width: 400px;
          }
@@ -258,11 +258,12 @@
                      type="text"
                      style="align-self: right"
                   >
-                     Sign In
+                  <a href="sign_in_page.html">Sign in</a>
                   </button>
                </div>
             </div>
             <div class="second_row">
+              <div class="second_row_dropmenu">
                <button class="dropmenu">
                 <i class="fa-solid fa-bars fa-2x"></i>
                </button>
@@ -272,6 +273,7 @@
                   <a href="#">About</a>
                   <a href="#">Help</a>
                </div>
+              </div>
                <div class="search_bar">
                   <input
                      class="search"
