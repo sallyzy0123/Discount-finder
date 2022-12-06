@@ -60,6 +60,13 @@ function populateComments() {
         commentSection.innerHTML = `<p>There is no comments on this post yet...</p>
                                     <p>Be the first one to wrote something!</p>`;
     };
-}
+};
 
 populateComments();
+
+function showCommentNum() {
+    const commentNumber = document.querySelector(".comment-number")
+    commentNumber.textContent = comments.length.toString();
+};
+
+showCommentNum();
