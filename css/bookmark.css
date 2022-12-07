@@ -1,0 +1,159 @@
+/* Base Styles */
+:root {
+    font-size: 10px;
+}
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+body {
+    font-family: "Open Sans", Arial, sans-serif;
+    min-height:100vh;
+    background-color: #fafafa;
+    color: #262626;
+    padding-bottom:3rem;
+}
+img {
+    display: block;
+}
+.container {
+    max-width: 93.5rem;
+    margin:0 auto;
+    padding:0 2rem;
+}
+.visually-hidden {
+    position:absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+}
+
+/* Profile Section */
+.profile {
+    padding: 1rem  0;
+}
+.profile::after {
+    content:"";
+    display: block;
+    clear: both;
+}
+.profile-image {
+    float:left;
+    width: calc(33.333% - 1rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 3rem;
+}
+.profile-image img {
+    border-radius: 50%;
+    width:14rem;
+}
+.profile-user-settings {
+    float: left;
+    width: calc(66.666% - 2rem);
+    margin-top:  1.1rem;
+}
+.profile-user-name {
+    display: inline-block;
+    margin:1rem auto;
+    font-size: 3.2rem;
+    font-weight: 300;
+}
+.profile-user-email {
+    font-size: 3.2rem;
+    margin:1rem auto;
+}
+.profile-user-edit-btn {
+    display: inline-block;
+    font-size: 1.4rem;
+    line-height: 1.8;
+    border: 0.1rem solid #dbdbdb;
+    border-radius: 0.3rem;
+    padding:0 2.4rem;
+    background: none;
+    color:inherit;
+    cursor:pointer;
+    margin: 1rem 0;
+}
+/* Navigation bar Section */
+nav {
+    width: 100%;
+    height: 6rem;
+
+}
+nav a {
+    font-size: 3rem;
+    text-decoration: none;
+
+}
+nav ul,
+nav li {
+    margin: 0;
+    padding: 1rem 0;
+    list-style: none;
+}
+nav ul,
+nav a {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+nav li {
+    flex: 1;
+    border-right:1px solid gray;
+}
+nav li:last-of-type{
+    border-right:none;
+}
+hr {
+    margin-block-start: 0;
+}
+
+/* Gallery Section - photo part*/
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -1rem -1rem;
+    padding-bottom: 3rem;
+    padding-top: 2rem;
+}
+.gallery-item {
+    position: relative;
+    flex: 1 0 22rem;
+    margin: 1rem;
+    width:100%;
+    max-width:400px;
+}
+.gallery-image {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+.gallery-item-icon {
+    position: absolute;
+    top: 0;
+    right: 5%;
+}
+.gallery-item-icon li {
+    display: inline-block;
+    font-size: 2rem;
+    font-weight:600;
+    color: black;
+}
+
+/* Gallery Section - info part*/
+.gallery-item-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 2rem;
+}
+.gallery-item-originalprice {
+    text-decoration: line-through;
+}
+.gallery-item-discountedprice {
+    color: #FF5000;
+}
