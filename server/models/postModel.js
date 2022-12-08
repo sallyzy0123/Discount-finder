@@ -4,9 +4,9 @@ const promisePool = pool.promise();
 
 const getAllPosts = async (res) => {
     try {
-        // const [rows] = await promisePool.
-        // query("SELECT user_id, name, email, role FROM wop_user");
-        // return rows;
+        const [rows] = await promisePool.
+        query('select Name, CategoryId, Location, Picture, OriginalPrice, DiscountedPrice from Post');
+        return rows;
     } catch (e) {
         console.error("error", e.message);
         res.status(500).send(e.message);
