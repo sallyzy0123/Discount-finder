@@ -11,7 +11,7 @@ const getPosts = async (req, res) => {
 
 const getPost = async (req, res) => {
     // chooses one object of an array with matching Id
-    const post = await postModel.getPostById(res, req.params.catId);
+    const post = await postModel.getPostById(res, req.params.postId);
     if (post) {
         res.json(post);
     } else {
