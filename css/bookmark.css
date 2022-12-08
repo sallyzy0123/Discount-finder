@@ -119,6 +119,7 @@ hr {
     margin: -1rem -1rem;
     padding-bottom: 3rem;
     padding-top: 2rem;
+    justify-content: space-around;
 }
 .gallery-item {
     position: relative;
@@ -131,17 +132,27 @@ hr {
     width: 100%;
     height: auto;
     cursor: pointer;
+    opacity: 1;
+    transition: .5s ease;
 }
 .gallery-item-icon {
     position: absolute;
     top: 0;
     right: 5%;
+    opacity:0;
 }
 .gallery-item-icon li {
     display: inline-block;
-    font-size: 2rem;
-    font-weight:600;
+    font-size: 3rem;
+}
+.fa-bookmark {
     color: black;
+}
+.gallery-item:hover img {
+    opacity: .5;
+}
+.gallery-item:hover .gallery-item-icon {
+    opacity: 1;
 }
 
 /* Gallery Section - info part*/
