@@ -5,7 +5,7 @@ const promisePool = pool.promise();
 const getAllPosts = async (res) => {
     try {
         const [rows] = await promisePool.
-        query('select Name, CategoryId, Location, Picture, OriginalPrice, DiscountedPrice from Post');
+        query('select Name, CategoryId, Location, Picture, OriginalPrice, DiscountedPrice from post');
         return rows;
     } catch (e) {
         console.error("error", e.message);
@@ -16,8 +16,8 @@ const getAllPosts = async (res) => {
 const getPostById = async (res, postId) => {
     try {
         const [rows] = await promisePool.
-        query('select CategoryId, Name, Description, Location, Picture, OriginalPrice, DiscountedPrice ' +
-            'from Post ' +
+        query('select Name, Description, Location, Picture, OriginalPrice, DiscountedPrice, CategoryName ' +
+            'from post join category on post.CategoryId = category.CategoryId ' +
             'where PostId like ?',
             [postId]);
         return rows[0];
@@ -29,9 +29,7 @@ const getPostById = async (res, postId) => {
 
 const addPost = async (post, res) => {
     try {
-        const sql = 'insert into ' +
-            'Post(UserId, CategoryId, Name, Description, Location, Picture, OriginalPrice, DiscountedPrice)' +
-            'values (?, ?, ?, ?, ?, ?, ?, ?);';
+        const sql = 'insert into post values (null, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
         const values = [];
         const [result] = await promisePool.query(sql, values);
         return result.insertId;
@@ -45,7 +43,7 @@ const deletePostById = async (postId, user, role, res) => {
     try {
         if (role === 0) {
             const [rows] = await promisePool.
-            query('delete from Post where PostId = ?', [postId]);
+            query('delete from post where PostId = ?', [postId]);
             return rows;
         } else {
             const [rows] = await promisePool.

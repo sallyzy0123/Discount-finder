@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="../css/post.css" rel="stylesheet">
     <script defer src="../js/post.js"></script>
+    <script defer src="../js/comments.js"></script>
     <script src="https://kit.fontawesome.com/9571e53263.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
@@ -33,41 +34,82 @@
 
             <div class="post-content">
 
-                <div class="post-title">
-                    <h3>Post name</h3>
+                <div class="category">
+                    <span class="smaller-icons">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </span>
+                    <div class="category-name">
+                        Kitten
+                    </div>
                 </div>
+
+<!--                TODO: add date of the post-->
+
+                <div class="post-title">
+                    <h3 class="post-name">Post name</h3>
+                </div>
+                <div class="location">
+                        <span class="smaller-icons">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </span>
+                    <div class="location-name">
+                        Helsinki
+                    </div>
+                </div>
+
+                <hr>
 
                 <div class="post-main-content">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor est sit amet justo vehicula, at fermentum nisl sollicitudin. Nunc lacinia, risus id consectetur pretium, nibh nisl malesuada purus, gravida ultricies erat leo eget lorem. Donec aliquet, tortor eget aliquam feugiat, sapien mi dignissim sem, sed eleifend urna nisi tristique magna. Donec imperdiet enim erat, quis ultricies dolor porttitor non. Proin eget pellentesque nunc. Ut nec elit eget turpis lobortis efficitur. Proin ultricies vestibulum nunc quis suscipit.
 
-                    Nunc commodo faucibus arcu eu tristique. Duis iaculis tincidunt fermentum. Curabitur efficitur hendrerit justo, non tincidunt lectus lacinia et. Ut tincidunt placerat metus vitae rhoncus. Integer pretium at tellus vel aliquet. Nullam tincidunt congue lectus sed vulputate. Mauris auctor sem vel ante egestas sagittis. In facilisis odio accumsan iaculis volutpat.
-                </div>
+                    <img class="post-image" src="http://placekitten.com/200/300">
 
-                <div class="tags">
-                    <div class="location">
+                    <div class="price">
+                        <div class="discounted-price">100</div>
+                            <div class="currency">
+                                <span class="currency-sign">
+                                    €
+                                </span>
+                            </div>
+                        <div class="price-right-side">
+                            <div class="discount">
+                                <div class="discount-msg">Save: </div>
+                                <div class="discount-amount">50</div>
+                            </div>
+                            <div class="original-price">
+                                <div class="orig-price-msg">Original price: </div>
+                                <div class="original-price-amount">100</div>
+                            </div>
+                        </div>
 
                     </div>
-                    <div class="category">
 
+                    <hr>
+
+                    <div class="post-description">
+                        Fuck this shit I'm out
                     </div>
+
                 </div>
+
+                <hr>
+
 
                 <div class="post-footer">
 
                     <div class="post-write-comment">
-                        <span>
+                        <span class="bigger-icons">
                             <i class="fa-solid fa-comments"></i>
                         </span>
                         <span class="comment-number">0</span>
                     </div>
                     <div class="like">
-                        <span>
+                        <span class="bigger-icons">
                             <i class="fa-solid fa-thumbs-up"></i>
                         </span>
                         <span class="like-number">0</span>
                     </div>
                     <div class="dislike">
-                        <span>
+                        <span class="bigger-icons">
                             <i class="fa-solid fa-thumbs-down"></i>
                         </span>
                         <span class="dislike-number">0</span>
