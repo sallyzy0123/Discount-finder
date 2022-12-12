@@ -29,7 +29,28 @@ img {
     overflow: hidden;
     clip: rect(1px, 1px, 1px, 1px);
 }
-
+/* First row Section */
+.container {
+    display: flex;
+    flex-direction: column;
+ }
+ .first_row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    margin-left: 3rem;
+ }
+.logo {
+    width: 20rem;
+}
+.log_out_button {
+    border: none;
+    background-color: #ffffff00;
+    color: gray;
+    font-size: 3rem;;
+ }
 /* Profile Section */
 .profile {
     padding: 1rem  0;
