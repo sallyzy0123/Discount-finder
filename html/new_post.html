@@ -17,24 +17,24 @@
             <form action="http://localhost:3000/post" method="post" class="light-border"
                   enctype="multipart/form-data" id="addPostForm">
                 <label class="form_label">Name of product:</label>
-                <input class="border" type="text" name="name" required placeholder="Name">
+                <input class="border" type="text" name="Name" required placeholder="Name">
                 <label class="form_label">Product location:</label>
-                <input class="border" type="text" name="location" required placeholder="Location" />
+                <input class="border" type="text" name="Location" required placeholder="Location" />
                 <label class="form_label">Category:</label>
-                <select class="border add-category" required name="category">
+                <select class="border add-category" required name="Category">
                     <option value="">Select category</option>
                 </select>
                 <label class="form_label">Discounted price:</label>
-                <input class="border" type="number" step="0.1" name="discounted-price"
+                <input class="border" type="number" step="0.1" name="DiscountedPrice"
                        required placeholder="Discounted price">
                 <label class="form_label">Original price:</label>
-                <input class="border" type="number" step="0.1" name="original-price"
+                <input class="border" type="number" step="0.1" name="OriginalPrice"
                        required placeholder="Original price">
                 <label class="form_label">Add a photo of the product:</label>
                 <input class="border" type="file" name="Picture" accept="image/*"
                        required placeholder="Choose file">
                 <label class="form_label">Add a product description:</label> <br>
-                <textarea id="description" maxlength="1000" required
+                <textarea name="Description" maxlength="1000" required
                           placeholder="Write a product description" spellcheck="true"></textarea>
                 <button class="border" type="submit">Upload</button>
             </form>

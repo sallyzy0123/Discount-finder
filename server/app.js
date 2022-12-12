@@ -20,6 +20,6 @@ app.use('/post', postRouter, commentRouter);
 // app.use('/post', commentRouter);
 app.use('/user', userRouter);
 app.use('/category', categoryRouter);
-app.use('/evaluation', evaluationRouter);
+// app.use('/evaluation', evaluationRouter);
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
