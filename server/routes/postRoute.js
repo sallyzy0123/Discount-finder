@@ -1,11 +1,10 @@
 'use strict';
 const express = require("express");
 const router = express.Router();
-// const multer = require('multer')
+const multer = require('multer');
 // const {body} = require('express-validator');
 
 const postController = require('../controllers/postController');
-const commentController = require("../controllers/commentController");
 
 // const fileFilter = (req, file, cb) => {
 //     // The function should call `cb` with a boolean
@@ -20,17 +19,18 @@ const commentController = require("../controllers/commentController");
 //     }
 // };
 
-// const upload = multer({ dest: 'uploads/', fileFilter});
+const upload = multer({ dest: 'uploads/'
+    // , fileFilter
+});
 
 router.get('/', postController.getPosts)
-    .get('/:postId', postController.getPost, commentController.getComments)
-    .post('/', postController.createPost)
-    // .post('/',
-        // upload.single('cat'),
+    .get('/:postId', postController.getPost)
+    .post('/',
+        upload.single('Picture'),
         // body('name').isLength({min: 3}).trim().escape(),
         // body('description').isDate(),
         // body('category').isFloat({min: 0.1, max: 30}),
-        // catController.createCat)
+        postController.createPost)
     .put('/:postId', postController.modifyPost) // TODO: add validators, the same as post
     .delete('/:postId', postController.deletePost);
 

@@ -22,6 +22,8 @@ const getPost = async (req, res) => {
 const createPost = async (req, res) => {
     console.log('Creating a new post:', req.body);
     const newPost = req.body;
+    newPost.Picture = req.file.filename;
+    console.log('Creating a new post:', newPost);
     const result = await postModel.addPost(newPost, res);
     res.status(201).json({postId: result});
 };
