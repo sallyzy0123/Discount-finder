@@ -2,12 +2,31 @@
 const url = 'http://localhost:3000';
 
 // select existing html elements
-const gallery = document.querySelector('.gallery');
-const profile = document.querySelector('.profile');
+const forthRow = document.querySelector('.forth_row');
+const searchButton = document.querySelector('.search_button')
+let posts = [];
+// const profile = document.querySelector('.profile');
 
 // get user data 
 // const user = JSON.parse(sessionStorage.getItem('user'));
 
+// the search bar
+searchButton.addEventListener("click", (e) => {
+    // get the input value
+    let searchInput = document.querySelector('.search').value.toLowerCase();
+
+    // filter the posts which has the keyword 
+    const filteredPosts = posts.filter( (post) => {
+        return ( post.Name.toLowerCase().includes(searchInput) || 
+                post.Description.toLowerCase().includes(searchInput) || 
+                post.Location.toLowerCase().includes(searchInput)
+       );
+    })
+
+    // empty the post section and update the posts
+    forthRow.innerHTML='';
+    createPostCards(filteredPosts);
+})
 
 // create post cards
 const createPostCards = (posts) => {
@@ -39,7 +58,7 @@ const createPostCards = (posts) => {
         })
 
         // remove the post by click the bin icon
-        i2.addEventListener('clikc', () => {
+        i2.addEventListener('click', () => {
             // remove this post and update the page
         })
 
@@ -82,7 +101,7 @@ const createPostCards = (posts) => {
         p4.append(post.DiscountedPrice + '$');
         
         // append the element
-        gallery.appendChild(div1);
+        forthRow.appendChild(div1);
         div1.append(div2, img, div3);
         div2.appendChild(ul1);
         ul1.append(li1, li2);
@@ -96,43 +115,6 @@ const createPostCards = (posts) => {
     })
 }
 
-
-const createUserProfileCard = (users) => {
-  // add the image section
-  const div1 = document.createElement('div');
-  div1.className = "profile-image";
-  const img1 = document.createElement('img');
-  img1.className = "profileImage";
-  img1.src = users[2].photo;
-  img1.alt = users[2].username;
-
-  // add the user info section
-  const div2 = document.createElement('div');
-  div2.className = "profile-user-settings";
-  const p1 = document.createElement('p');
-  p1.className = "profile-user-name";
-  p1.innerHTML = users[2].username;
-  const p2 = document.createElement('p');
-  p2.className = "profile-user-email";
-  p2.innerHTML = users[2].email;
-
-  // add the edit button
-  const button = document.createElement('button');
-  button.type = button;
-  button.className = "profile-user-edit-btn";
-  button.textContent = 'Edit';
-
-  // open the edit profile page by clicking the button
-  button.addEventListener('click', function() {
-    document.location.href = "edit_profile.html";
-  })
-
-  // append the element
-  profile.append(div1, div2);
-  div1.appendChild(img1);
-  div2.append(p1, p2, button);
-}
-
 const getPosts = async () => {
     try {
       // const fetchOptions = {
@@ -141,32 +123,11 @@ const getPosts = async () => {
       //   },
       // };
       const response = await fetch(url + '/post');
-      const posts = await response.json();
-      console.log(posts);
+      posts = await response.json();
       createPostCards(posts);
     } catch (e) {
       console.log(e.message);
     }
 };
 
-// here is get user profile 
-// need to check
-const getUsers = async () => {
-  try {
-    // const fetchOptions = {
-    //   headers: {
-    //     Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-    //   },
-    // };
-    // const response = await fetch(url + '/user', fetchOptions);
-    const response = await fetch(url + '/user');
-    const users = await response.json();
-    console.log(users)
-    createUserProfileCard(users);
-  } catch (e) {
-    console.log(e.message);
-  }
-}
-
-getUsers();
 getPosts();

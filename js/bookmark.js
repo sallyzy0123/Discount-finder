@@ -64,10 +64,10 @@ const createBookmarkCards = (bookmarks) => {
         div5.className = "gallery-item-right";
         const p3 = document.createElement('p');
         p3.className = "gallery-item-originalprice";
-        p3.append(bookmark.OriginalPrice);
+        p3.append(bookmark.OriginalPrice + '$');
         const p4 = document.createElement('p');
         p4.className = "gallery-item-discountedprice";
-        p4.append(bookmark.DiscountedPrice);
+        p4.append(bookmark.DiscountedPrice + '$');
         
         // append the element
         gallery.appendChild(div1);

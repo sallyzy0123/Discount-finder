@@ -5,7 +5,7 @@ const promisePool = pool.promise();
 const getAllPosts = async (res) => {
     try {
         const [rows] = await promisePool.
-        query('select Name, CategoryId, Location, Picture, OriginalPrice, DiscountedPrice from post');
+        query('select Name, CategoryId, Location, Picture, OriginalPrice, DiscountedPrice, Description from post');
         return rows;
     } catch (e) {
         console.error("error", e.message);
