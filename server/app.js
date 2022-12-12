@@ -7,6 +7,7 @@ const commentRouter = require('./routes/commentRoute');
 const userRouter = require('./routes/userRoute');
 const categoryRouter = require('./routes/categoryRoute');
 const evaluationRouter = require('./routes/evaluationRoute');
+const bookmarkRoute = require('./routes/bookmarkRoute');
 const port = 3000;
 
 app.use(express.static('uploads'));
@@ -16,10 +17,15 @@ app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 app.use('/post', postRouter, commentRouter);
-// app.use('/post/:postId/comment', commentRouter);
-// app.use('/post', commentRouter);
+
+app.use(express.static('uploads'));
+
+app.use('/bookmark', bookmarkRoute);
 app.use('/user', userRouter);
 app.use('/category', categoryRouter);
 // app.use('/evaluation', evaluationRouter);
+app.use('/post', postRouter);
+// app.use('/post/:postId/comment', commentRouter);
+// app.use('/post', commentRouter);
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
