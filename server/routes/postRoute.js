@@ -1,11 +1,11 @@
 'use strict';
-// catRoutes
 const express = require("express");
 const router = express.Router();
 // const multer = require('multer')
 // const {body} = require('express-validator');
 
 const postController = require('../controllers/postController');
+const commentController = require("../controllers/commentController");
 
 // const fileFilter = (req, file, cb) => {
 //     // The function should call `cb` with a boolean
@@ -23,7 +23,8 @@ const postController = require('../controllers/postController');
 // const upload = multer({ dest: 'uploads/', fileFilter});
 
 router.get('/', postController.getPosts)
-    .get('/:postId', postController.getPost)
+    .get('/:postId', postController.getPost, commentController.getComments)
+    .post('/', postController.createPost)
     // .post('/',
         // upload.single('cat'),
         // body('name').isLength({min: 3}).trim().escape(),

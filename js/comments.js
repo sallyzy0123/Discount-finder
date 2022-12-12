@@ -1,23 +1,31 @@
-const comments = [
-    {
-        'text': 'Nunc commodo faucibus arcu eu tristique. Duis iaculis tincidunt fermentum. Curabitur efficitur hendrerit justo, non tincidunt lectus lacinia et. Ut tincidunt placerat metus vitae rhoncus. Integer pretium at tellus vel aliquet. Nullam tincidunt congue lectus sed vulputate. Mauris auctor sem vel ante egestas sagittis. In facilisis odio accumsan iaculis volutpat.',
-        'date': '2022-11-11',
-        'username': 'sweetheart',
-        'img': '../images/profile.jpg',
-    },
-    {
-        'text': 'Nunc commodo faucibus arcu eu tristique. Duis iaculis tincidunt fermentum. Curabitur efficitur hendrerit justo, non tincidunt lectus lacinia et. Ut tincidunt placerat metus vitae rhoncus. Integer pretium at tellus vel aliquet. Nullam tincidunt congue lectus sed vulputate. Mauris auctor sem vel ante egestas sagittis. In facilisis odio accumsan iaculis volutpat.',
-        'date': '2022-12-10',
-        'username': 'pomegranate',
-        'img': '../images/profile.jpg',
-    },
-    {
-        'text': 'Nunc commodo faucibus arcu eu tristique. Duis iaculis tincidunt fermentum. Curabitur efficitur hendrerit justo, non tincidunt lectus lacinia et. Ut tincidunt placerat metus vitae rhoncus. Integer pretium at tellus vel aliquet. Nullam tincidunt congue lectus sed vulputate. Mauris auctor sem vel ante egestas sagittis. In facilisis odio accumsan iaculis volutpat.',
-        'date': '2022-09-13',
-        'username': 'iamtired',
-        'img': '../images/profile.jpg',
-    },
-]
+// const comments = [
+//     {
+//         'text': 'Nunc commodo faucibus arcu eu tristique. Duis iaculis tincidunt fermentum. Curabitur efficitur hendrerit justo, non tincidunt lectus lacinia et. Ut tincidunt placerat metus vitae rhoncus. Integer pretium at tellus vel aliquet. Nullam tincidunt congue lectus sed vulputate. Mauris auctor sem vel ante egestas sagittis. In facilisis odio accumsan iaculis volutpat.',
+//         'date': '2022-11-11',
+//         'username': 'sweetheart',
+//         'img': '../images/profile.jpg',
+//     },
+//     {
+//         'text': 'Nunc commodo faucibus arcu eu tristique. Duis iaculis tincidunt fermentum. Curabitur efficitur hendrerit justo, non tincidunt lectus lacinia et. Ut tincidunt placerat metus vitae rhoncus. Integer pretium at tellus vel aliquet. Nullam tincidunt congue lectus sed vulputate. Mauris auctor sem vel ante egestas sagittis. In facilisis odio accumsan iaculis volutpat.',
+//         'date': '2022-12-10',
+//         'username': 'pomegranate',
+//         'img': '../images/profile.jpg',
+//     },
+//     {
+//         'text': 'Nunc commodo faucibus arcu eu tristique. Duis iaculis tincidunt fermentum. Curabitur efficitur hendrerit justo, non tincidunt lectus lacinia et. Ut tincidunt placerat metus vitae rhoncus. Integer pretium at tellus vel aliquet. Nullam tincidunt congue lectus sed vulputate. Mauris auctor sem vel ante egestas sagittis. In facilisis odio accumsan iaculis volutpat.',
+//         'date': '2022-09-13',
+//         'username': 'iamtired',
+//         'img': '../images/profile.jpg',
+//     },
+// ]
+
+// const getComments = async (id) => {
+//     const response = await fetch(url + '/post/' + id + '/comment');
+//     const comments = await response.json();
+//     console.log(comments);
+// }
+//
+// getComments(2);
 
 const commentSection = document.querySelector('.comment-section');
 

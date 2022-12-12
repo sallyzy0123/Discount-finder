@@ -20,15 +20,17 @@ const discountedPrice = document.querySelector('.discounted-price');
 const discountAmount = document.querySelector('.discount-amount');
 const originalPrice = document.querySelector('.original-price-amount');
 const postDescription = document.querySelector('.post-description');
+const postDate = document.querySelector('.post-date');
 
 
 // add existing cat data to form
 const getPost = async (id) => {
     const response = await fetch(url + '/post/' + id);
     const post = await response.json();
-    console.log(post)
+    console.log(post);
     categoryName.innerHTML = post.CategoryName;
     postName.innerHTML = post.Name;
+    postDate.innerHTML = post.Date.slice(0, 10);
     locationName.innerHTML = post.Location;
     discountedPrice.innerHTML = post.DiscountedPrice;
     originalPrice.innerHTML = post.OriginalPrice;
@@ -36,4 +38,5 @@ const getPost = async (id) => {
     postDescription.innerHTML = post.Description;
     categoryImage.src = post.Picture;
 };
-getPost(1);
+
+getPost(2);
