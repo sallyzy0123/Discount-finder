@@ -100,18 +100,18 @@ const createUserProfileCard = (users) => {
   div1.className = "profile-image";
   const img1 = document.createElement('img');
   img1.className = "profileImage";
-  img1.src = users[0].photo;
-  img1.alt = users[0].username;
+  img1.src = users[2].photo;
+  img1.alt = users[2].username;
 
   // add the user info section
   const div2 = document.createElement('div');
   div2.className = "profile-user-settings";
   const p1 = document.createElement('p');
   p1.className = "profile-user-name";
-  p1.innerHTML = users[0].username;
+  p1.innerHTML = users[2].username;
   const p2 = document.createElement('p');
   p2.className = "profile-user-email";
-  p2.innerHTML = users[0].email;
+  p2.innerHTML = users[2].email;
 
   // add the edit button
   const button = document.createElement('button');
