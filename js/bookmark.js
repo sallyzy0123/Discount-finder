@@ -15,14 +15,14 @@ const createBookmarkCards = (bookmarks) => {
         div1.className = "gallery-item";
         div1.tabIndex = "0";
 
-        // add the icon
+        // add the bookmark icon
         const div2 = document.createElement('div');
         div2.className = "gallery-item-icon";
         const ul1 = document.createElement('ul');
         const li1 = document.createElement('li');
         li1.className = "gallery-item-bookmark";
         const a1 = document.createElement('a');
-        a1.href = "#edit";
+        a1.href = "#bookmark";
         const i1 = document.createElement('i');
         i1.className = "fas fa-bookmark";
 
@@ -80,9 +80,6 @@ const createBookmarkCards = (bookmarks) => {
         div4.append(p1, p2);
         div5.append(p3, p4);
     })
-    // for (let i = 0; i < bookmarks.length; i++) {
-        
-    // }
 }
 
 // const user = [
