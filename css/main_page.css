@@ -172,7 +172,7 @@ display: inline-block;
  }
  /* gallery item with buttons and image */
  .fourth_row {
-    display: flexbox;
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
