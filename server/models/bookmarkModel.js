@@ -36,10 +36,10 @@ const addBookmarkByUserId = async (PostId, UserId, res) => {
     res.status(500).send(e.message);
   }
 }
-const deleteBookmarkByUserId = async (PostId, UserId, res) => {
+const deleteBookmarkByUserId = async (UserId, PostId, res) => {
   try {
     const [rows] =
-      await promisePool.query("DELETE FROM bookmarks WHERE PostId = ? AND UserId = ?", 
+      await promisePool.query("DELETE FROM bookmarks WHERE UserId = ? AND PostId = ?", 
           [UserId, PostId]);
     return rows;
   } catch (e) {
