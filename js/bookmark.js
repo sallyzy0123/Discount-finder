@@ -43,7 +43,7 @@ const createBookmarkCards = (bookmarks) => {
         img.addEventListener('click', () => {
           // need to check which post page 
           // should add the postId
-          location.href = 'post.html';
+          location.href = 'post.html?id=' + bookmark.PostId;
         })
 
         const div3 = document.createElement('div');
@@ -85,33 +85,33 @@ const createBookmarkCards = (bookmarks) => {
     // }
 }
 
-const user = [
-  {
-    "UserId": 1,
-    "Username": "coldwinter",
-    "Email": "coldwinter@gamil.com",
-    "Password": "coldwinter123",
-    "Photo": "https://divedigital.id/wp-content/uploads/2022/07/2-Aesthetic-Cat-with-Sleepy-Mask.jpg"
-  }];
+// const user = [
+//   {
+//     "UserId": 1,
+//     "Username": "coldwinter",
+//     "Email": "coldwinter@gamil.com",
+//     "Password": "coldwinter123",
+//     "Photo": "https://divedigital.id/wp-content/uploads/2022/07/2-Aesthetic-Cat-with-Sleepy-Mask.jpg"
+//   }];
 
-const createUserProfileCard = (user) => {
+const createUserProfileCard = (users) => {
   // add the image section
   const div1 = document.createElement('div');
   div1.className = "profile-image";
   const img1 = document.createElement('img');
   img1.className = "profileImage";
-  img1.src = user[0].Photo;
-  img1.alt = user[0].Username;
+  img1.src = users[0].photo;
+  img1.alt = users[0].username;
 
   // add the user info section
   const div2 = document.createElement('div');
   div2.className = "profile-user-settings";
   const p1 = document.createElement('p');
   p1.className = "profile-user-name";
-  p1.innerHTML = user[0].Username;
+  p1.innerHTML = users[0].username;
   const p2 = document.createElement('p');
   p2.className = "profile-user-email";
-  p2.innerHTML = user[0].Email;
+  p2.innerHTML = users[0].email;
 
   // add the edit button
   const button = document.createElement('button');
@@ -129,6 +129,7 @@ const createUserProfileCard = (user) => {
   div1.appendChild(img1);
   div2.append(p1, p2, button);
 }
+
 const getBookmarks = async () => {
     try {
       // const fetchOptions = {
@@ -138,26 +139,31 @@ const getBookmarks = async () => {
       // };
       const response = await fetch(url + '/bookmark');
       const bookmarks = await response.json();
+      console.log(bookmarks);
       createBookmarkCards(bookmarks);
     } catch (e) {
       console.log(e.message);
     }
 };
-createUserProfileCard(user);
+// createUserProfileCard(user);
 // here is get user profile 
 // need to check
-// const getUsers = async () => {
-//   try {
-//     const fetchOptions = {
-//       headers: {
-//         Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-//       },
-//     };
-//     const response = await fetch(url + '/user', fetchOptions);
-//     const bookmarks = await response.json();
-//     createBookmarkCards(bookmarks);
-//   } catch (e) {
-//     console.log(e.message);
-//   }
-// }
+const getUsers = async () => {
+  try {
+    // const fetchOptions = {
+    //   headers: {
+    //     Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+    //   },
+    // };
+    // const response = await fetch(url + '/user', fetchOptions);
+    const response = await fetch(url + '/user');
+    const users = await response.json();
+    console.log(users)
+    createUserProfileCard(users);
+  } catch (e) {
+    console.log(e.message);
+  }
+}
+
+getUsers();
 getBookmarks();

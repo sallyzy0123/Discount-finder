@@ -1,7 +1,7 @@
 // Controller
 "use strict";
 const bookmarkModel = require("../models/bookmarkModel");
-const bookmarks = bookmarkModel.bookmarks;
+// const bookmarks = bookmarkModel.bookmarks;
 
 const getBookmarks = async (req, res) => {
   const bookmarks = await bookmarkModel.getAllBookmarks(res);

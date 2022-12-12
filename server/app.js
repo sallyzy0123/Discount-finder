@@ -15,6 +15,6 @@ app.use(express.urlencoded({ extended: true })); // for parsing application/x-ww
 app.use('/bookmark', bookmarkRoute);
 app.use('/user', userRouter);
 app.use('/category', categoryRouter);
-app.use('/evaluation', evaluationRouter);
+// app.use('/evaluation', evaluationRouter);
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
