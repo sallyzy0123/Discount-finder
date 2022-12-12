@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../css/edit_profile.css" rel="stylesheet" />
+    <script defer src="/js/edit_profile.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <section>
+      <header>
+        <img src="../images/logo.svg" alt="Website logo" width="100%" />
+      </header>
+      <div class="form">
+        <form class="form_content">
+          <div class="header_content">
+            <h1 class="header_text">Edit your profile</h1>
+          </div>
+          <div>
+            <label class="form_label">Username:</label>
+            <input class="border" type="text" name="username" placeholder="Username"/>
+          </div>
+          <div>
+            <label class="form_label">Email:</label>
+            <input class="border" type="text" name="username" disabled="disabled" placeholder="Email"/>
+          </div>
+          <div>
+            <label class="form_label">Password:</label>
+            <input class="border" type="password" name="password" placeholder="password"/>
+          </div>
+          <div>
+            <label class="form_label">Photo:</label>
+            <input class="border" type="file" name="profile" accept="image/*" placeholder="Choose file"/>
+          </div>
+          <div>
+            <button class="save_button" type="submit">Save</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </body>
+</html>

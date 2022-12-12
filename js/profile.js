@@ -1,5 +1,7 @@
 'use strict'
-
+// const url = 'http://localhost:3000';
+// get user data for admin check
+// const user = JSON.parse(sessionStorage.getItem('user'));
 // get username from database
 
 // get useremail from database
@@ -9,6 +11,27 @@
 // nav bar to different page
 
 // get gallery from database
+const posts = [
+        {
+            "PostId":1,
+            "UserId":1,
+            "Name":"Samsung S21 Ultra",
+            "Location":"Helsinki",
+            "Picture":"https://place-puppy.com/300x300",
+            "OriginalPrice":1200,
+            "DiscountedPrice":900
+        },
+        {
+            "PostId":2,
+            "UserId":1,
+            "Name":"Ipad Air 2022",
+            "Location":"Gigantti",
+            "Picture":"https://www.gigantti.fi/image/dv_web_D180001002945293/431421/ipad-air-2022-64-gb-wifi-violetti--pdp_zoom-3000.jpg",
+            "OriginalPrice":599,
+            "DiscountedPrice":589
+        }
+    ];
+
 
 // select existing html elements
 const gallery = document.querySelector('.gallery');
@@ -39,7 +62,8 @@ const createGalleryCards = (posts) => {
         const img = document.createElement('img');
         img.className = "gallery-image";
         // need to check 
-        img.src = url + 'thumbnails/' + posts[i].picutre;
+        //img.src = url + 'thumbnails/' + posts[i].picutre;
+        img.src = posts[i].Picture;
         img.alt = "discount";
 
         const div3 = document.createElement('div');
@@ -49,38 +73,32 @@ const createGalleryCards = (posts) => {
         div4.className = "gallery-item-left";
         const p1 = document.createElement('p');
         p1.className = "gallery-item-product";
-        p1.append('ipad');
+        p1.append(posts[i].Name);
         const p2 = document.createElement('p');
         p2.className = "gallery-item-location";
-        p2.append('Gigantti');
+        p2.append(posts[i].Location);
 
         const div5 = document.createElement('div');
         div5.className = "gallery-item-right";
         const p3 = document.createElement('p');
         p3.className = "gallery-item-originalprice";
-        p3.append('€');
+        p3.append(posts[i].OriginalPrice);
         const p4 = document.createElement('p');
         p4.className = "gallery-item-discountedprice";
-        p4.append('€');
+        p4.append(posts[i].DiscountedPrice);
         
 
         gallery.appendChild(div1);
-        div1.appendChild(div2);
+        div1.append(div2, img, div3);
         div2.appendChild(ul1);
-        ul1.appendChild(li1);
+        ul1.append(li1, li2);
         li1.appendChild(a1);
         a1.appendChild(i1);
-        ul1.appendChild(li2);
         li2.appendChild(a2);
         a2.appendChild(i2);
-        div1.appendChild(img);
-        div1.appendChild(div3);
-        div3.appendChild(div4);
-        div4.appendChild(p1);
-        div4.appendChild(p2);
-        div3.appendChild(div5);
-        div5.appendChild(p3);
-        div5.appendChild(p4);
+        div3.append(div4, div5);
+        div4.append(p1, p2);
+        div5.append(p3, p4);
     }
 }
 createGalleryCards(posts);

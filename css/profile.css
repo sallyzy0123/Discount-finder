@@ -29,7 +29,11 @@ img {
     overflow: hidden;
     clip: rect(1px, 1px, 1px, 1px);
 }
-
+/* First row Section */
+.first_row {
+    margin-left: 5rem;
+    width: 50%;
+}
 /* Profile Section */
 .profile {
     padding: 1rem  0;

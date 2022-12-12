@@ -1,37 +1,21 @@
-const posts = [
-    {
-      'name': 'Title 1',
-      'location': 'Caption 1',
-      'originalprice': '150€',
-      'discountedprice':'100€',
-      'picture': 'images/discount1.png',
-    },
-    {
-  
-        'name': 'Title 2',
-        'location': 'Caption 2',
-        'originalprice': '2000€',
-        'discountedprice':'10000€',
-        'picture': 'images/discount1.png',
-    },
-    {
-        'name': 'Title 3',
-        'location': 'Caption 3',
-        'originalprice': '100€',
-        'discountedprice':'80€',
-        'picture': 'images/discount1.png',
-    },
-]
+'use strict';
+const url = 'http://localhost:3000'; // change url when uploading to server
+
 // select existing html elements
 const gallery = document.querySelector('.gallery');
+const profile = document.querySelector('.profile');
+
+// get user data 
+// const user = JSON.parse(sessionStorage.getItem('user'));
 
 // create gallery cards
-const createGalleryCards = (posts) => {
-    for (let i = 0; i < posts.length; i++) {
+const createBookmarkCards = (bookmarks) => {
+    bookmarks.forEach((bookmark) => {
         const div1 = document.createElement('div');
         div1.className = "gallery-item";
         div1.tabIndex = "0";
 
+        // add the icon
         const div2 = document.createElement('div');
         div2.className = "gallery-item-icon";
         const ul1 = document.createElement('ul');
@@ -42,49 +26,138 @@ const createGalleryCards = (posts) => {
         const i1 = document.createElement('i');
         i1.className = "fas fa-bookmark";
 
+        // remove the bookmark by click the icon
+        i1.addEventListener('click', () => {
+          // first the icon become light 
+          // second the page updated to remove this post
+        })
+
+        // add the image
         const img = document.createElement('img');
         img.className = "gallery-image";
         // need to check 
-        img.src = posts[i].picutre;
-        img.alt = "discount";
+        img.src = bookmark.Picture;
+        img.alt = bookmark.Name;
+
+        // open the main post page by click the image
+        img.addEventListener('click', () => {
+          // need to check which post page 
+          // should add the postId
+          location.href = 'post.html';
+        })
 
         const div3 = document.createElement('div');
         div3.className = "gallery-item-info";
 
+        // add the post info
         const div4 = document.createElement('div');
         div4.className = "gallery-item-left";
         const p1 = document.createElement('p');
         p1.className = "gallery-item-product";
-        p1.append('ipad');
+        p1.append(bookmark.Name);
         const p2 = document.createElement('p');
         p2.className = "gallery-item-location";
-        p2.append('Gigantti');
+        p2.append(bookmark.Location);
 
+        // add the post price
         const div5 = document.createElement('div');
         div5.className = "gallery-item-right";
         const p3 = document.createElement('p');
         p3.className = "gallery-item-originalprice";
-        p3.append('€');
+        p3.append(bookmark.OriginalPrice);
         const p4 = document.createElement('p');
         p4.className = "gallery-item-discountedprice";
-        p4.append('€');
+        p4.append(bookmark.DiscountedPrice);
         
-
+        // append the element
         gallery.appendChild(div1);
-        div1.appendChild(div2);
+        div1.append(div2, img, div3);
         div2.appendChild(ul1);
         ul1.appendChild(li1);
         li1.appendChild(a1);
         a1.appendChild(i1);
-        div1.appendChild(img);
-        div1.appendChild(div3);
-        div3.appendChild(div4);
-        div4.appendChild(p1);
-        div4.appendChild(p2);
-        div3.appendChild(div5);
-        div5.appendChild(p3);
-        div5.appendChild(p4);
-    }
+        div3.append(div4, div5);
+        div4.append(p1, p2);
+        div5.append(p3, p4);
+    })
+    // for (let i = 0; i < bookmarks.length; i++) {
+        
+    // }
 }
-createGalleryCards(posts);
 
+const user = [
+  {
+    "UserId": 1,
+    "Username": "coldwinter",
+    "Email": "coldwinter@gamil.com",
+    "Password": "coldwinter123",
+    "Photo": "https://divedigital.id/wp-content/uploads/2022/07/2-Aesthetic-Cat-with-Sleepy-Mask.jpg"
+  }];
+
+const createUserProfileCard = (user) => {
+  // add the image section
+  const div1 = document.createElement('div');
+  div1.className = "profile-image";
+  const img1 = document.createElement('img');
+  img1.className = "profileImage";
+  img1.src = user[0].Photo;
+  img1.alt = user[0].Username;
+
+  // add the user info section
+  const div2 = document.createElement('div');
+  div2.className = "profile-user-settings";
+  const p1 = document.createElement('p');
+  p1.className = "profile-user-name";
+  p1.innerHTML = user[0].Username;
+  const p2 = document.createElement('p');
+  p2.className = "profile-user-email";
+  p2.innerHTML = user[0].Email;
+
+  // add the edit button
+  const button = document.createElement('button');
+  button.type = button;
+  button.className = "profile-user-edit-btn";
+  button.textContent = 'Edit';
+
+  // open the edit profile page by clicking the button
+  button.addEventListener('click', function() {
+    document.location.href = "edit_profile.html";
+  })
+
+  // append the element
+  profile.append(div1, div2);
+  div1.appendChild(img1);
+  div2.append(p1, p2, button);
+}
+const getBookmarks = async () => {
+    try {
+      // const fetchOptions = {
+      //   headers: {
+      //     Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+      //   },
+      // };
+      const response = await fetch(url + '/bookmark');
+      const bookmarks = await response.json();
+      createBookmarkCards(bookmarks);
+    } catch (e) {
+      console.log(e.message);
+    }
+};
+createUserProfileCard(user);
+// here is get user profile 
+// need to check
+// const getUsers = async () => {
+//   try {
+//     const fetchOptions = {
+//       headers: {
+//         Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+//       },
+//     };
+//     const response = await fetch(url + '/user', fetchOptions);
+//     const bookmarks = await response.json();
+//     createBookmarkCards(bookmarks);
+//   } catch (e) {
+//     console.log(e.message);
+//   }
+// }
+getBookmarks();
