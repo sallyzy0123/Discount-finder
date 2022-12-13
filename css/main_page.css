@@ -93,7 +93,7 @@
  }
  .third_row_sort {
   position: relative;
-display: inline-block;
+  display: inline-block;
  }
  .dropdown-content {
     display: none;

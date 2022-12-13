@@ -24,8 +24,7 @@ app.use('/bookmark', bookmarkRoute);
 app.use('/user', userRouter);
 app.use('/category', categoryRouter);
 // app.use('/evaluation', evaluationRouter);
-app.use('/post', postRouter);
-// app.use('/post/:postId/comment', commentRouter);
+app.use('/post', postRouter, commentRouter);
 // app.use('/post', commentRouter);
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

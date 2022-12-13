@@ -54,7 +54,7 @@
         font-size: 0.7em;
     }
 
-    .add-comment {
+    form {
         display: flex;
         gap: 10px;
         align-items: center;
@@ -70,7 +70,7 @@
         resize: none;
     }
 
-    input[type=button] {
+    button {
         flex-grow: 1;
         height: 30%;
     }

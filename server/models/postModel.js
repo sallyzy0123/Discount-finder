@@ -16,8 +16,10 @@ const getAllPosts = async (res) => {
 const getPostById = async (res, postId) => {
     try {
         const [rows] = await promisePool.
-        query('select Name, Description, Location, Picture, OriginalPrice, DiscountedPrice, CategoryName, Date ' +
+        query('select Name, Description, Location, Picture, OriginalPrice, DiscountedPrice, CategoryName, ' +
+            'post.CategoryId, Date, Username, Photo ' +
             'from post join category on post.CategoryId = category.CategoryId ' +
+            'join user on post.UserId = user.UserId ' +
             'where PostId like ?',
             [postId]);
         return rows[0];
@@ -32,7 +34,7 @@ const addPost = async (post, res) => {
         const date = new Date().toJSON().slice(0, 10);
         const sql = 'insert into post values (null, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
         const values =
-            [post.UserId, post.CategoryId, post.Name, post.Description, post.Location, post.Picture, post.OriginalPrice,
+            [post.UserId, post.Category, post.Name, post.Description, post.Location, post.Picture, post.OriginalPrice,
                 post.DiscountedPrice, date];
         console.log(date);
         const [result] = await promisePool.query(sql, values);

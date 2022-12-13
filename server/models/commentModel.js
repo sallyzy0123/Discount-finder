@@ -4,7 +4,8 @@ const promisePool = pool.promise();
 
 const getCommentsByPostId = async (res, postId) => {
     try {
-        const sql = 'select comment.Date, comment.Text, user.Username from comment join user on comment.UserId = user.UserId where PostId = ? order by Date desc';
+        const sql = 'select comment.Date, comment.Text, user.Username, user.Photo ' +
+            'from comment join user on comment.UserId = user.UserId where PostId = ? order by Date desc';
         const values = [postId];
         const [rows] = await promisePool.query(sql, values);
         console.log("model: " + postId);
