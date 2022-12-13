@@ -78,68 +78,67 @@
  /* dropdown button for filter and sort */
 
  .dropbtn {
-    background-color: #ffffff00;
-    color: gray;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
- }
- .dropbtn2 {
-    background-color: #ffffff00;
-    color: gray;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
- }
- .third_row_sort {
-  position: relative;
+   background-color: #ffffff00;
+   color: gray;
+   padding: 16px;
+   font-size: 16px;
+   border: none;
+}
+.dropbtn2 {
+   background-color: #ffffff00;
+   color: gray;
+   padding: 16px;
+   font-size: 16px;
+   border: none;
+}
+.third_row_sort {
+ position: relative;
 display: inline-block;
- }
- .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    right: auto;
-    z-index: 1;
- }
- .dropdown-content2 {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    right: 0;
-    z-index: 1;
-    float: right;
- }
- .dropdown-content a {
-    float: none;
-    color: black;
-    padding: 5px 60px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
- }
- .dropdown-content2 a {
-    color: black;
-    padding: 5px 60px;
-    text-decoration: none;
-    display: block;
- }
- .dropdown-content a:hover {
-    background-color: #ccc;
- }
- .dropdown-content2 a:hover {
-    background-color: #ccc;
- }
+}
+.dropdown-content {
+   display: none;
+   position: absolute;
+   background-color: #f1f1f1;
+   min-width: 160px;
+   right: auto;
+   z-index: 1;
+}
+.dropdown-content2 {
+   display: none;
+   position: absolute;
+   background-color: #f1f1f1;
+   min-width: 160px;
+   right: 0;
+   z-index: 1;
+   float: right;
+}
+.dropdown-content a {
+   float: none;
+   color: black;
+   padding: 5px 60px;
+   text-decoration: none;
+   display: block;
+   text-align: left;
+}
+.dropdown-content2 a {
+   color: black;
+   padding: 5px 60px;
+   text-decoration: none;
+   display: block;
+}
+.dropdown-content a:hover {
+   background-color: #ccc;
+}
+.dropdown-content2 a:hover {
+   background-color: #ccc;
+}
 
- .third_row_filter:hover .dropdown-content {
-    display: block;
- }
- .third_row_sort:hover .dropdown-content2 {
-    display: block;
- }
-
+.third_row_filter:hover .dropdown-content {
+   display: block;
+}
+.third_row_sort:hover .dropdown-content2 {
+   display: block;
+}
  /* dropdown for the menu */
  .dropmenu {
     background-color: #ffffff00;

@@ -66,4 +66,3 @@ formContent.addEventListener('submit', async (evt) => {
     }
     location.href = 'profile.html';
 });
-  

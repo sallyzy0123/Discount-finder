@@ -28,6 +28,38 @@ searchButton.addEventListener("click", (e) => {
     createPostCards(filteredPosts);
 })
 
+// sort bar
+const dateAsc = document.querySelector('.sort-date-asc');
+dateAsc.addEventListener('click', (e) => {
+    const dateAscPosts = posts.sort( (a, b) => (a.Date > b.Date) ? 1 : -1);
+    console.log(dateAscPosts);
+    forthRow.innerHTML='';
+    createPostCards(dateAscPosts);
+});
+const dateDesc = document.querySelector('.sort-date-desc');
+dateDesc.addEventListener('click', (e) => {
+    const dateDescPosts = posts.sort( (a, b) => (a.Date > b.Date) ? 1 : -1);
+    console.log(dateDescPosts);
+    forthRow.innerHTML='';
+    createPostCards(dateDescPosts);
+});
+const PriceAsc = document.querySelector('.sort-price-asc');
+PriceAsc.addEventListener('click', (e) => {
+    const PriceAscPosts = posts.sort( (a, b) => (a.DiscountedPrice > b.DiscountedPrice) ? 1 : -1);
+    console.log(PriceAscPosts);
+    forthRow.innerHTML='';
+    createPostCards(PriceAscPosts);
+});
+const PriceDesc = document.querySelector('.sort-price-desc');
+PriceDesc.addEventListener('click', (e) => {
+    const PriceDescPosts = posts.sort( (a, b) => (a.DiscountedPrice < b.DiscountedPrice) ? 1 : -1);
+    console.log(PriceDescPosts);
+    forthRow.innerHTML='';
+    createPostCards(PriceDescPosts);
+});
+
+
+
 // create post cards
 const createPostCards = (posts) => {
     posts.forEach((post) => {

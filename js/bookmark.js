@@ -82,15 +82,6 @@ const createBookmarkCards = (bookmarks) => {
     })
 }
 
-// const user = [
-//   {
-//     "UserId": 1,
-//     "Username": "coldwinter",
-//     "Email": "coldwinter@gamil.com",
-//     "Password": "coldwinter123",
-//     "Photo": "https://divedigital.id/wp-content/uploads/2022/07/2-Aesthetic-Cat-with-Sleepy-Mask.jpg"
-//   }];
-
 const createUserProfileCard = (users) => {
   // add the image section
   const div1 = document.createElement('div');
