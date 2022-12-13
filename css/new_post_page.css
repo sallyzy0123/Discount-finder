@@ -57,3 +57,10 @@ body {
     border-radius: 0.25rem;
     padding: 0.5rem;
   }
+
+  textarea {
+    min-width: 300px;
+    max-width: 400px;
+    height: 150px;
+    resize: vertical;
+  }

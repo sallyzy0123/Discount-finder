@@ -19,9 +19,20 @@ const getPost = async (req, res) => {
     }
 };
 
+const getPostsByUserId = async (req, res) => {
+    const post = await postModel.getPostsByUserId(res, req.params.userId);
+    if (post) {
+        res.json(post);
+    } else {
+        res.sendStatus(404);
+    }
+};
+
 const createPost = async (req, res) => {
     console.log('Creating a new post:', req.body);
     const newPost = req.body;
+    newPost.Picture = req.file.filename;
+    console.log('Creating a new post:', newPost);
     const result = await postModel.addPost(newPost, res);
     res.status(201).json({postId: result});
 };
@@ -78,6 +89,7 @@ const modifyPost = async (req, res) => {
 module.exports = {
     getPosts,
     getPost,
+    getPostsByUserId,
     createPost,
     deletePost,
     modifyPost

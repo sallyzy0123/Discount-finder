@@ -16,7 +16,18 @@ const getCategory = async (req, res) => {
     }
 };
 
+const getPostsByCategory = async (req, res) => {
+    const category = await categoryModel.getPostsByCategory(res, req.params.categoryId);
+    if (category) {
+
+        res.json(category);
+    } else {
+        res.sendStatus(404);
+    }
+};
+
 module.exports = {
     getCategories,
     getCategory,
+    getPostsByCategory
  };

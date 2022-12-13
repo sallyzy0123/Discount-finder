@@ -9,27 +9,27 @@ const getQParam = (param) => {
 };
 
 // get id from address
-const user_id = getQParam('id');
+const id = getQParam('id');
 
 // select existing html elements
 const formContent = document.querySelector('.form_content');
 
 // get user data for admin check
-const user = JSON.parse(sessionStorage.getItem('user'));
+//const user = JSON.parse(sessionStorage.getItem('user'));
 
 // add existing user data to form
-const getUser = async (user) => {
+const getUser = async (id) => {
   try {
-    const options = {
-      headers: {
-        Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-      },
-    };
-    const response = await fetch(url + '/user', options);
+    // const options = {
+    //   headers: {
+    //     Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+    //   },
+    // };
+    const response = await fetch(url + '/user' + id);
     const inputs = formContent.querySelectorAll('input');
-    inputs[0].value = user.Username;
-    inputs[1].value = user.Email;
-    inputs[2].value = user.password;
+    inputs[0].value = id.Username;
+    inputs[1].value = id.Email;
+    inputs[2].value = id.password;
     // not sure what to do for photo
     // const users = await response.json();
   } catch (e) {
@@ -37,32 +37,20 @@ const getUser = async (user) => {
   }
 };
 
+getUser(1);
+
 // submit modify form
 formContent.addEventListener('submit', async (evt) => {
     evt.preventDefault();
-    const data = serializeJson(formContent);
-    // remove empty properties
-    for (const [prop, value] of Object.entries(data)) {
-      if (value === '') {
-        delete data[prop];
-      }
-    }
+    const fd = new FormData(formContent);
+    console.log("fetch: " + fd);
     const fetchOptions = {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-      },
-      body: JSON.stringify(data),
+      method: 'POST',
+      body: fd,
     };
-  
-    console.log(fetchOptions);
-    const response = await fetch(url + '/user/' + cat_id, fetchOptions);
+    const response = await fetch(url + '/user/' + id , fetchOptions);
     const json = await response.json();
-    if (json.error) {
-      alert(json.error.message);
-    } else {
-      alert(json.message);
-    }
-    location.href = 'profile.html';
+    alert(json.message);
+    console.log('response', json);
+    //location.href = 'profile.html';
 });

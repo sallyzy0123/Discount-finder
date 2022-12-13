@@ -3,7 +3,9 @@ const url = 'http://localhost:3000';
 
 // select existing html elements
 const forthRow = document.querySelector('.forth_row');
-const searchButton = document.querySelector('.search_button')
+const searchButton = document.querySelector('.search_button');
+const categoryList = document.querySelector('.category-list');
+const slideDownList = document.querySelector('.categorySlideDown')
 let posts = [];
 // const profile = document.querySelector('.profile');
 
@@ -163,3 +165,32 @@ const getPosts = async () => {
 };
 
 getPosts();
+
+const createCategoryOptions = (categories) => {
+    // clear user list
+    categoryList.innerHTML = '';
+    categories.forEach((category) => {
+        console.log(category)
+        // create options with DOM methods
+        const option = document.createElement('option');
+        const a = document.createElement('a');
+        a.href = url + '/category/' + category.categoryId;
+        a.textContent = category.categoryName;
+        //TODO: same page as main, but for categories
+        option.classList.add('border');
+        option.appendChild(a);
+        categoryList.appendChild(option);
+    });
+};
+
+// get categories to make options
+const getCategories = async () => {
+    try {
+        const response = await fetch(url + '/category');
+        const categories = await response.json();
+        createCategoryOptions(categories);
+    } catch (e) {
+        console.log(e.message);
+    }
+};
+getCategories();

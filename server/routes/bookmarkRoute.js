@@ -6,7 +6,7 @@ const bookmarkController = require("../controllers/bookmarkController");
 
 router.get('/', bookmarkController.getBookmarks)
     .get('/:userId', bookmarkController.getBookmarksByUserId)
-    .post('/', bookmarkController.addBookmark)
-    .delete('/:userId', bookmarkController.deleteBookmark);
+    .post('/:userId', bookmarkController.addBookmark)
+    .delete('/:userId/:postId', bookmarkController.deleteBookmark);
 
 module.exports = router;

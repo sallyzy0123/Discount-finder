@@ -8,6 +8,15 @@ const profile = document.querySelector('.profile');
 // get user data 
 // const user = JSON.parse(sessionStorage.getItem('user'));
 
+// get query parameter
+const getQParam = (param) => {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  return urlParams.get(param);
+};
+
+// get id from address
+const userId = getQParam('id');
 
 // create post cards
 const createPostCards = (posts) => {
@@ -133,21 +142,32 @@ const createUserProfileCard = (users) => {
   div2.append(p1, p2, button);
 }
 
-const getPosts = async () => {
-    try {
-      // const fetchOptions = {
-      //   headers: {
-      //     Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-      //   },
-      // };
-      const response = await fetch(url + '/post');
+// const getPosts = async () => {
+//     try {
+//       // const fetchOptions = {
+//       //   headers: {
+//       //     Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+//       //   },
+//       // };
+//       const response = await fetch(url + '/post');
+//       const posts = await response.json();
+//       console.log(posts);
+//       createPostCards(posts);
+//     } catch (e) {
+//       console.log(e.message);
+//     }
+// };
+const getPosts = async (id) => {
+  try {
+      const response = await fetch(url + '/post/user/' + id );
       const posts = await response.json();
       console.log(posts);
       createPostCards(posts);
-    } catch (e) {
+  } catch (e) {
       console.log(e.message);
-    }
+  }
 };
+getPosts(2);
 
 // here is get user profile 
 // need to check
@@ -169,4 +189,4 @@ const getUsers = async () => {
 }
 
 getUsers();
-getPosts();
+// getPosts();

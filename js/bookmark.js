@@ -5,6 +5,16 @@ const url = 'http://localhost:3000'; // change url when uploading to server
 const gallery = document.querySelector('.gallery');
 const profile = document.querySelector('.profile');
 
+// get query parameter
+const getQParam = (param) => {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  return urlParams.get(param);
+};
+
+// get id from address
+const userId = getQParam('id');
+
 // get user data 
 // const user = JSON.parse(sessionStorage.getItem('user'));
 
@@ -27,9 +37,11 @@ const createBookmarkCards = (bookmarks) => {
         i1.className = "fas fa-bookmark";
 
         // remove the bookmark by click the icon
-        i1.addEventListener('click', () => {
+        a1.addEventListener('click', () => {
           // first the icon become light 
           // second the page updated to remove this post
+          i1.className = "far fa-bookmark";
+          console.log("pressed");
         })
 
         // add the image
@@ -40,11 +52,11 @@ const createBookmarkCards = (bookmarks) => {
         img.alt = bookmark.Name;
 
         // open the main post page by click the image
-        img.addEventListener('click', () => {
+        // img.addEventListener('click', () => {
           // need to check which post page 
           // should add the postId
-          location.href = 'post.html?id=' + bookmark.PostId;
-        })
+          // location.href = 'post.html?id=' + bookmark.PostId;
+        // })
 
         const div3 = document.createElement('div');
         div3.className = "gallery-item-info";
@@ -118,21 +130,32 @@ const createUserProfileCard = (users) => {
   div2.append(p1, p2, button);
 }
 
-const getBookmarks = async () => {
-    try {
-      // const fetchOptions = {
-      //   headers: {
-      //     Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-      //   },
-      // };
-      const response = await fetch(url + '/bookmark');
+// const getBookmarks = async () => {
+//     try {
+//       // const fetchOptions = {
+//       //   headers: {
+//       //     Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+//       //   },
+//       // };
+//       const response = await fetch(url + '/bookmark');
+//       const bookmarks = await response.json();
+//       console.log(bookmarks);
+//       createBookmarkCards(bookmarks);
+//     } catch (e) {
+//       console.log(e.message);
+//     }
+// };
+// get categories to make options
+const getBookmarks = async (id) => {
+  try {
+      const response = await fetch(url + '/bookmark/' + id );
       const bookmarks = await response.json();
-      console.log(bookmarks);
       createBookmarkCards(bookmarks);
-    } catch (e) {
+  } catch (e) {
       console.log(e.message);
-    }
+  }
 };
+getBookmarks(3);
 // createUserProfileCard(user);
 // here is get user profile 
 // need to check
@@ -154,4 +177,4 @@ const getUsers = async () => {
 }
 
 getUsers();
-getBookmarks();
+// getBookmarks();
