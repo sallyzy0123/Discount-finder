@@ -3,6 +3,16 @@
     margin: 0;
 }
 
+.post-header-options {
+    display: flex;
+    justify-content: space-between;
+}
+
+.post-options {
+    display: flex;
+    align-self: center;
+}
+
 @media screen and (max-width: 450px) {
     main {
         height: 100vh;
@@ -152,5 +162,17 @@
         font-size: 0.7em;
     }
 
+    .page-header {
+        padding: 10px;
+        display: flex;
+        align-content: center;
+        justify-content: space-between;
+    }
+
+    .sign_in_button {
+        align-self: center;
+        justify-self: end;
+        max-width: fit-content;
+    }
 
 }

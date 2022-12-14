@@ -7,16 +7,25 @@
     <link href="../css/post.css" rel="stylesheet">
     <script defer src="../js/post.js"></script>
     <script defer src="../js/comments.js"></script>
+    <script defer src="../js/evaluation.js"></script>
     <script src="https://kit.fontawesome.com/9571e53263.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
+
+<header>
+    <div class="page-header">
+        <img src="../images/logo.svg" alt="Website logo" width="35%" />
+        <button
+                class="sign_in_button"
+                type="text">
+            <a href="./sign_in_page.html">Sign in</a>
+        </button>
+    </div>
+</header>
+
 <body>
+
     <main>
-
-        <div class="page-header">
-
-        </div>
-
         <div class="post">
 
             <div class="post-header">
@@ -42,8 +51,16 @@
                     </div>
                 </div>
 
-                <div class="post-title">
-                    <h3 class="post-name">Post name</h3>
+                <div class="post-header-options">
+                    <div class="post-title">
+                        <h3 class="post-name">Post name</h3>
+                    </div>
+                    <div class="post-options">
+                        <a class="bigger-icons" href="#">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+                        <span id="delete-icon" class="bigger-icons"><i class="fa-solid fa-trash-can"></i></span>
+                    </div>
                 </div>
                 <div class="location">
                         <span class="smaller-icons">

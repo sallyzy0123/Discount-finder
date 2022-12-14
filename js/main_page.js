@@ -1,4 +1,5 @@
 'use strict'
+
 const url = 'http://localhost:3000';
 
 // select existing html elements
@@ -68,8 +69,8 @@ const createPostCards = (posts) => {
         const img = document.createElement('img');
         img.className = "gallery-image";
         // need to check 
-        //img.src = url + 'thumbnails/' + posts[i].picutre;
-        img.src = post.Picture;
+        img.src = url + '/' + post.Picture;
+        // img.src = post.Picture;
         img.alt = post.Name;
 
         // open the main post page by click the image

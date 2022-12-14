@@ -31,6 +31,7 @@ const getCategories = async () => {
     try {
         const response = await fetch(url + '/category');
         const categories = await response.json();
+        console.log(categories)
         createCategoryOptions(categories);
     } catch (e) {
         console.log(e.message);
@@ -48,10 +49,9 @@ addForm.addEventListener('submit', async (evt) => {
         method: 'POST',
         body: fd,
     };
-    //TODO: fetch the category id
     const response = await fetch(url + '/post', fetchOptions);
     const json = await response.json();
     alert(json.message);
     console.log('response', json);
-    //location.href = 'front.html';
+    location.href = '../html/main_page.html';
 });
