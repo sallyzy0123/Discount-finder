@@ -19,11 +19,13 @@ const postImage = document.querySelector('.post-image');
 const discountedPrice = document.querySelector('.discounted-price');
 const discountAmount = document.querySelector('.discount-amount');
 const originalPrice = document.querySelector('.original-price-amount');
+const postDescription = document.querySelector('.post-description');
 const postDate = document.querySelector('.post-date');
 const a = document.createElement('a');
 const username = document.querySelector('.post-username');
 const userIcon = document.querySelector('.user-icon');
 const deleteBtn = document.querySelector('#delete-icon');
+const editIcon = document.querySelector('.bigger-icon');
 
 
 // add existing cat data to form
@@ -44,6 +46,10 @@ const getPost = async (id) => {
     username.innerHTML = post.Username;
     userIcon.src = post.Photo;
     console.log(post);
+
+    editIcon.addEventListener('click',async () => {
+        location.href = '../html/edit_post.html?id=' + post_id;
+    });
 
     deleteBtn.addEventListener('click', async () => {
         const fetchOptions = {

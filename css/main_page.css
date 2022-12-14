@@ -43,6 +43,9 @@
     cursor: pointer;
     font-size: 20px;
  }
+ .plus-icon {
+    font-size: 1.4rem;
+ }
  .sign_in_button {
     border: none;
     background-color: #ffffff00;

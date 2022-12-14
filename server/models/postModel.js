@@ -16,7 +16,7 @@ const getAllPosts = async (res) => {
 const getPostById = async (res, postId) => {
     try {
         const [rows] = await promisePool.
-        query('select PostId, Name, Description, Location, Picture, OriginalPrice, DiscountedPrice, CategoryName, ' +
+        query('select PostId, Name, post.Description, Location, Picture, OriginalPrice, DiscountedPrice, CategoryName, ' +
             'post.CategoryId, Date, Username, Photo ' +
             'from post join category on post.CategoryId = category.CategoryId ' +
             'join user on post.UserId = user.UserId ' +

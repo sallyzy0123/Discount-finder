@@ -7,12 +7,16 @@ const forthRow = document.querySelector('.forth_row');
 const searchButton = document.querySelector('.search_button');
 const categoryList = document.querySelector('.category-list');
 const slideDownList = document.querySelector('.categorySlideDown');
+const plusIcon = document.querySelector('.plus-icon');
 let posts = [];
 // const profile = document.querySelector('.profile');
 
 // get user data 
 // const user = JSON.parse(sessionStorage.getItem('user'));
 
+plusIcon.addEventListener('click', (e) => {
+    location.href = "./new_post.html";
+})
 // the search bar
 searchButton.addEventListener("click", (e) => {
     // get the input value
