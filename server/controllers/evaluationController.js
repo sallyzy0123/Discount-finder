@@ -1,7 +1,6 @@
 "use strict";
 const evaluationModel = require("../models/evaluationModel");
 
-
 const getEvaluation = async (req, res) => {
     const evaluation = await evaluationModel.getEvaluationById(res, req.params.postId);
     if (evaluation) {

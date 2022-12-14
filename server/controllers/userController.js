@@ -1,4 +1,4 @@
-"use strict";
+ "use strict";
 const userModel = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 const passport = require("passport");
@@ -11,7 +11,6 @@ const getUsers = async (req, res) => {
 const getUser = async (req, res) => {
     const user = await userModel.getUserById(res, req.params.userId);
     if (user) {
-
         res.json(user);
     } else {
         res.sendStatus(404);
@@ -53,6 +52,7 @@ const deleteUser = async (req, res) => {
 };
 
 const checkToken = (req, res) => {
+    delete req.user.password; //doesn't allow the password to be seen in the browser's console
     res.json({user: req.user});
 };
 
