@@ -30,5 +30,4 @@ app.use('/auth', authRouter)
     .use('/post', postRouter)
     .use('/comment', commentRouter)
 
-
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

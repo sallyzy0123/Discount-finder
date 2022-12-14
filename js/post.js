@@ -62,6 +62,8 @@ const getPost = async (id) => {
             console.log(e.message);
         }
     });
+
+    
 };
 
-getPost(27);
+getPost(post_id);

@@ -5,8 +5,6 @@ const commentModel = require('../models/commentModel');
 // const { makeThumbnail, getCoordinates } = require("../utils/image");
 
 const getComments = async (req, res) => {
-    // const comments = await commentModel.getCommentsByPostId(res, req.params.postId);
-    // res.json(comments);
     const comments = await commentModel.getCommentsByPostId(res, req.params.postId);
     console.log("controller: " + req.params)
     if (comments) {

@@ -15,8 +15,7 @@ router
       body("passwd").isLength({ min: 8 }).trim(),
       userController.createUser
    )
-//    .put("/", userController.modifyUser)
-//    .put("/:userId", userController.modifyUser)
-//    .delete("/:userId", userController.deleteUser);
+   .put("/:userId", userController.modifyUser)
+   .delete("/:userId", userController.deleteUser);
 
 module.exports = router;

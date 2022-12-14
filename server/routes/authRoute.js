@@ -9,9 +9,9 @@ router
     .post('/login', login)
     .post(
         '/register',
-        body('name').isLength({ min: 3 }).trim().escape(),
+        body('username').isLength({ min: 3 }).trim().escape(),
         body('email').isEmail().normalizeEmail(),
-        body('passwd').isLength({ min: 8 }).trim(),
+        body('password').isLength({ min: 8 }).trim(),
         register
     );
 
