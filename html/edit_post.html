@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../css/new_post_page.css" rel="stylesheet" />
+    <link href="../css/edit_post.css" rel="stylesheet" />
     <title>Document</title>
 </head>
 <body>
@@ -13,9 +13,9 @@
 
     <div class="forms">
         <div class="form-wrapper">
-            <h3>Add new post</h3>
-            <form action="http://localhost:3000/post" method="post" class="light-border"
-                  enctype="multipart/form-data" id="addPostForm">
+            <h3>Edit your post</h3>
+            <form action="http://localhost:3000/post" method="put" class="light-border"
+                  enctype="multipart/form-data" id="editPostForm">
                 <label class="form_label">Name of product:</label>
                 <input class="border" type="text" name="Name" required placeholder="Name">
                 <label class="form_label">Product location:</label>
@@ -41,7 +41,7 @@
         </div>
     </div>
 
-    <script src="../js/new-post.js"></script>
+    <script src="../js/edit_post.js"></script>
 </div>
 
 </body>

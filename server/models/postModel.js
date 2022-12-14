@@ -123,7 +123,7 @@ const updatePostById = async (post, res) => {
             'where PostId = ?';
         // TODO: make post modification date
         const values =
-            [post.CategoryId, post.Name, post.Description, post.Location, post.Picture, post.OriginalPrice,
+            [post.Category, post.Name, post.Description, post.Location, post.Picture, post.OriginalPrice,
                 post.DiscountedPrice, post.PostId];
         const [rows] = await promisePool.query(sql, values)
         return rows;

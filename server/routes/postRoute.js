@@ -32,7 +32,9 @@ router.get('/', postController.getPosts)
         // body('description').isDate(),
         // body('category').isFloat({min: 0.1, max: 30}),
         postController.createPost)
-    .put('/:postId', postController.modifyPost) // TODO: add validators, the same as post
+    .put('/:postId', 
+        upload.single('Picture'),
+        postController.modifyPost) // TODO: add validators, the same as post
     .delete('/:postId', postController.deletePost);
 
 module.exports = router;

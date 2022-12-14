@@ -75,6 +75,7 @@ const deletePost = async (req, res) => {
 
 const modifyPost = async (req, res) => {
     const post = req.body;
+    post.Picture = req.file.filename;
     if (req.params.postId) {
         post.PostId = req.params.postId;
     }
