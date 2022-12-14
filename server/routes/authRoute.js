@@ -5,8 +5,9 @@ const router = express.Router();
 // const {login, logout, register} = require('../controllers/authController');
 const { login } = require("../controllers/authController");
 
-router.post("/login", login);
+router
 //   .get('/logout', logout)
+  .post("/login", login)
 //   .post(
 //     '/register',
 //     body('username').isLength({ min: 3 }).trim().escape(),

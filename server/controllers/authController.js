@@ -9,7 +9,7 @@ require("dotenv").config();
 const login = (req, res) => {
     console.log("does it have anything?", req.body)
    passport.authenticate("local", { session: false }, (err, user, info) => {
-      console.log("here's the first error", user.username);
+      console.log("here's the first error", user);
       if (err || !user) {
          console.log("here's the error", user);
          return res.status(400).json({
@@ -22,14 +22,19 @@ const login = (req, res) => {
             res.send(err);
          }
          // generate a signed son web token with the contents of user object and return it in the response
-         const token = jwt.sign(user, process.env.JWT_SECRET);
-         return res.json({ user, token });
+         // const token = jwt.sign(user, process.env.JWT_SECRET);
+         // return res.json({ user, token });
       });
    })(req, res);
 };
+const logout = (req, res) => {
+   console.log('some user logged out');
+   res.json({message: 'logged out'});
+ };
 
 module.exports = {
    login,
+   logout,
 };
 
 //     if (err) {

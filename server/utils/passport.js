@@ -4,31 +4,58 @@ const Strategy = require("passport-local").Strategy;
 const passportJWT = require("passport-jwt");
 const JWTStrategy = passportJWT.Strategy;
 const ExtractJWT = passportJWT.ExtractJwt;
-// const bcrypt = require('bcryptjs');
-const { getUserLogin } = require("../models/userModel");
+const bcrypt = require('bcryptjs');
+// const { getUserLogin } = require("../models/userModel");
+const { getUserByEmail } = require("../models/userModel");
 const dotenv = require("dotenv");
 dotenv.config();
 
 // local strategy for username password login
+// passport.use(
+//     new Strategy(async (email, password, done) => {
+//       const username = [email];
+//       try {
+//         // const [user] = await getUserLogin(params);
+//         const user = await getUserByEmail(username);
+//         console.log('Local strategy', user); // result is binary row
+//         if (user === undefined) {
+//           return done(null, false, {message: 'Incorrect email.'});
+//         }
+//         if (user.Password !== password) {
+//           return done(null, false, {message: 'Incorrect password.'});
+//         }
+//         // use spread syntax to create shallow copy to get rid of binary row type
+//         return done(null, {...user}, {message: 'Logged In Successfully'});
+//       } catch (err) {
+//         return done(err);
+//       }
+//     })
+//   );
 passport.use(
-    new Strategy(async (email, password, done) => {
-      const params = [email];
-      try {
-        const [user] = await getUserLogin(params);
-        console.log('Local strategy', user); // result is binary row
-        if (user === undefined) {
-          return done(null, false, {message: 'Incorrect email.'});
-        }
-        if (user.password !== password) {
-          return done(null, false, {message: 'Incorrect password.'});
-        }
-        // use spread syntax to create shallow copy to get rid of binary row type
-        return done(null, {...user}, {message: 'Logged In Successfully'});
-      } catch (err) {
-        return done(err);
+  new Strategy(
+      {
+          usernameField: 'username',
+          passwordField: 'password',
+          session: false,
+          passReqToCallback: true
+      },
+
+      async (request, username, password, done) => {
+        console.log({username, password})
+          const user = await getUserByEmail(username);
+          console.log(user)
+
+          if (!user) {
+              return done(null, false);
+          }
+          const passwordOK =  bcrypt.compareSync(password, user.Password);
+          if (!passwordOK) { 
+            return done(null, false, { message: "Incorrect password." });
+          }
+          return done(null, user, { message: "Logged In Successfully" });
       }
-    })
-  );
+  )
+);
   
   // JWT strategy for handling bearer token
   passport.use(
@@ -53,7 +80,7 @@ passport.use(
 //   new Strategy(async (username, password, done) => {
 //     const params = [username];
 //     try {
-//       const [user] = await getUserLogin(params);
+//       const [user] = await getUserByEmail(params);
 //       console.log("Local strategy", user); 
 //       if (user === undefined) {
 //         console.log("this is the problem", user)
@@ -88,6 +115,6 @@ passport.use(
 //     }
 //   )
 // );
-// // consider .env for secret, e.g. secretOrKey: process.env.JWT_SECRET
+// consider .env for secret, e.g. secretOrKey: process.env.JWT_SECRET
 
 module.exports = passport;
