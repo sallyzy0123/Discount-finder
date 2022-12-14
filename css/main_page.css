@@ -115,21 +115,32 @@ display: inline-block;
 .dropdown-content a {
    float: none;
    color: black;
-   padding: 5px 60px;
+   padding: 5px 10px;
    text-decoration: none;
    display: block;
    text-align: left;
 }
 .dropdown-content2 a {
    color: black;
-   padding: 5px 60px;
+   padding: 5px 30px;
    text-decoration: none;
    display: block;
+}
+.category-list option {
+   float: none;
+   color: black;
+   padding: 5px 10px;
+   text-decoration: none;
+   display: block;
+   text-align: left;
 }
 .dropdown-content a:hover {
    background-color: #ccc;
 }
 .dropdown-content2 a:hover {
+   background-color: #ccc;
+}
+.category-list option:hover {
    background-color: #ccc;
 }
 
@@ -139,6 +150,10 @@ display: inline-block;
 .third_row_sort:hover .dropdown-content2 {
    display: block;
 }
+.categorySlideDown:hover .categroy-list {
+   display: block;
+}
+
  /* dropdown for the menu */
  .dropmenu {
     background-color: #ffffff00;
