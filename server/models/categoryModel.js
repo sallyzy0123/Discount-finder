@@ -22,7 +22,22 @@ const getCategoryById = async (res, categoryId) => {
     }
   };
 
+const getPostsByCategory = async (res, categoryId) => {
+  try {
+    const [rows] = await promisePool
+        .query("select Name, category.categoryName, location, picture, originalPrice, discountedPrice, description " +
+            "from post join category on category.categoryId = post.categoryId " +
+            "where category.categoryId = ?",
+            [categoryId]);
+    return rows;
+  } catch (e) {
+    console.error("error", e.message);
+    res.status(500).send(e.message);
+  }
+};
+
   module.exports = {
     getAllCategories,
     getCategoryById,
+    getPostsByCategory
   };

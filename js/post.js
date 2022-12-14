@@ -1,72 +1,49 @@
-const comments = [
-    {
-        'text': 'Nunc commodo faucibus arcu eu tristique. Duis iaculis tincidunt fermentum. Curabitur efficitur hendrerit justo, non tincidunt lectus lacinia et. Ut tincidunt placerat metus vitae rhoncus. Integer pretium at tellus vel aliquet. Nullam tincidunt congue lectus sed vulputate. Mauris auctor sem vel ante egestas sagittis. In facilisis odio accumsan iaculis volutpat.',
-        'date': '2022-11-11',
-        'username': 'sweetheart',
-        'img': '../images/profile.jpg',
-    },
-    {
-        'text': 'Nunc commodo faucibus arcu eu tristique. Duis iaculis tincidunt fermentum. Curabitur efficitur hendrerit justo, non tincidunt lectus lacinia et. Ut tincidunt placerat metus vitae rhoncus. Integer pretium at tellus vel aliquet. Nullam tincidunt congue lectus sed vulputate. Mauris auctor sem vel ante egestas sagittis. In facilisis odio accumsan iaculis volutpat.',
-        'date': '2022-12-10',
-        'username': 'pomegranate',
-        'img': '../images/profile.jpg',
-    },
-    {
-        'text': 'Nunc commodo faucibus arcu eu tristique. Duis iaculis tincidunt fermentum. Curabitur efficitur hendrerit justo, non tincidunt lectus lacinia et. Ut tincidunt placerat metus vitae rhoncus. Integer pretium at tellus vel aliquet. Nullam tincidunt congue lectus sed vulputate. Mauris auctor sem vel ante egestas sagittis. In facilisis odio accumsan iaculis volutpat.',
-        'date': '2022-09-13',
-        'username': 'iamtired',
-        'img': '../images/profile.jpg',
-    },
-]
+'use strict';
+const url = 'http://localhost:3000'; // change url when uploading to server
 
-const commentSection = document.querySelector('.comment-section');
-
-function populateComments() {
-    if (comments.length != 0) {
-        for (let i = 0; i < comments.length; i++) {
-            const newComment = document.createElement('div');
-            newComment.className = "new-comment";
-
-            const commentHeader = document.createElement('div');
-            commentHeader.className = "comment-header";
-            const commentUser = document.createElement('div');
-            commentUser.className = "comment-user";
-            const commentUserPic = document.createElement('img');
-
-            const commentInfo = document.createElement('div');
-            commentInfo.className = "comment-info";
-            const commentDetails = document.createElement('div');
-            commentDetails.className = "comment-details";
-            const commentText = document.createElement('div');
-            commentText.className = "comment-text";
-            const commentDate = document.createElement('div');
-            commentDate.className = "comment-date";
-            const commentUsername = document.createElement('div');
-            commentUsername.className = "comment-username";
-
-            commentDetails.append(commentUsername, commentDate)
-            commentInfo.append(commentDetails, commentText);
-            commentUser.append(commentUserPic);
-            commentHeader.append(commentUser);
-            newComment.append(commentHeader, commentInfo);
-            commentSection.append(newComment);
-
-            commentText.textContent = comments[i].text;
-            commentDate.textContent = comments[i].date;
-            commentUsername.textContent = comments[i].username;
-            commentUserPic.src = comments[i].img;
-        };
-    } else {
-        commentSection.innerHTML = `<p>There is no comments on this post yet...</p>
-                                    <p>Be the first one to wrote something!</p>`;
-    };
+// get query parameter
+const getQParam = (param) => {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    return urlParams.get(param);
 };
 
-populateComments();
+// get id from address
+const postId = getQParam('id');
 
-function showCommentNum() {
-    const commentNumber = document.querySelector(".comment-number")
-    commentNumber.textContent = comments.length.toString();
+// select existing html elements
+const categoryName = document.querySelector('.category-name');
+const postName = document.querySelector('.post-name');
+const locationName = document.querySelector('.location-name');
+const categoryImage = document.querySelector('.post-image'); // TODO: do something with an image
+const discountedPrice = document.querySelector('.discounted-price');
+const discountAmount = document.querySelector('.discount-amount');
+const originalPrice = document.querySelector('.original-price-amount');
+const postDescription = document.querySelector('.post-description');
+const postDate = document.querySelector('.post-date');
+const a = document.createElement('a');
+const username = document.querySelector('.post-username');
+const userIcon = document.querySelector('.user-icon');
+
+
+// add existing cat data to form
+const getPost = async (id) => {
+    const response = await fetch(url + '/post/' + id);
+    const post = await response.json();
+    console.log(post);
+    a.href = url + '/category/' + post.CategoryId;
+    a.textContent = post.CategoryName;
+    categoryName.appendChild(a);
+    postName.innerHTML = post.Name;
+    postDate.innerHTML = post.Date.slice(0, 10);
+    locationName.innerHTML = post.Location;
+    discountedPrice.innerHTML = post.DiscountedPrice;
+    originalPrice.innerHTML = post.OriginalPrice;
+    discountAmount.innerHTML = post.OriginalPrice - post.DiscountedPrice;
+    postDescription.innerHTML = post.Description;
+    categoryImage.src = post.Picture;
+    username.innerHTML = post.Username;
+    userIcon.src = post.Photo;
 };
 
-showCommentNum();
+getPost(1);

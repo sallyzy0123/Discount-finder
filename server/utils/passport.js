@@ -34,21 +34,21 @@ dotenv.config();
 passport.use(
   new Strategy(
       {
-          usernameField: 'username',
+          usernameField: 'email',
           passwordField: 'password',
           session: false,
           passReqToCallback: true
       },
 
-      async (request, username, password, done) => {
-        console.log({username, password})
-          const user = await getUserByEmail(username);
+      async (request, email, password, done) => {
+        console.log("these are the username and password",{email, password})
+          const user = await getUserByEmail(email);
           console.log(user)
 
           if (!user) {
               return done(null, false);
           }
-          const passwordOK =  bcrypt.compareSync(password, user.Password);
+          const passwordOK = await bcrypt.compare(password, user.Password);
           if (!passwordOK) { 
             return done(null, false, { message: "Incorrect password." });
           }
@@ -65,7 +65,7 @@ passport.use(
         secretOrKey: process.env.JWT_SECRET,
       },
       (jwtPayload, done) => {
-        //console.log(jwtPayload);
+        console.log(jwtPayload);
         return done(null, jwtPayload);
       }
     )
@@ -77,8 +77,8 @@ passport.use(
 
 // // local strategy for username password login
 // passport.use(
-//   new Strategy(async (username, password, done) => {
-//     const params = [username];
+//   new Strategy(async (email, password, done) => {
+//     const params = [email];
 //     try {
 //       const [user] = await getUserByEmail(params);
 //       console.log("Local strategy", user); 
@@ -91,7 +91,7 @@ passport.use(
 
 //         return done(null, false, { message: "Incorrect password." });
 //       }
-//       //hash login password and compare it to the password hash in DB
+//       // hash login password and compare it to the password hash in DB
 //       const passwordOK = await bcrypt.compare(password, user.Password);
 //       if (!passwordOK) {
 //         return done(null, false, { message: "Incorrect password." });
@@ -115,6 +115,6 @@ passport.use(
 //     }
 //   )
 // );
-// consider .env for secret, e.g. secretOrKey: process.env.JWT_SECRET
+// //consider .env for secret, e.g. secretOrKey: process.env.JWT_SECRET
 
 module.exports = passport;

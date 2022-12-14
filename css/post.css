@@ -14,7 +14,7 @@
         display: flex;
         flex-direction: row-reverse;
         justify-content: flex-end;
-        padding: 10px;
+        padding: 10px 10px 0 10px;
     }
 
     .post-info {
@@ -37,7 +37,7 @@
     }
 
     .post-title {
-        padding: 0 0 10px 10px;
+        padding: 10px 0px 0 ;
     }
 
     .post-footer {
@@ -46,11 +46,15 @@
         justify-content: space-between;
     }
 
-    span i {
+    .bigger-icons {
         font-size: 1.5em;
     }
 
-    .add-comment {
+    .smaller-icons {
+        font-size: 0.7em;
+    }
+
+    form {
         display: flex;
         gap: 10px;
         align-items: center;
@@ -66,7 +70,7 @@
         resize: none;
     }
 
-    input[type=button] {
+    button {
         flex-grow: 1;
         height: 30%;
     }
@@ -101,4 +105,52 @@
         justify-content: space-between;
         padding: 0 0 10px;
     }
+
+    .tags {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .location-name, .category-name {
+        display: inline-flex;
+    }
+
+    .post-main-content {
+        display: flex;
+        padding: 10px;
+        flex-direction: column;
+    }
+
+    .price {
+        display: flex;
+    }
+
+    .price-right-side {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding: 10px;
+    }
+
+    .discounted-price, .currency-sign {
+        font-size: 3em;
+    }
+
+    .currency-sign {
+        display: inline;
+    }
+
+    .discount {
+        display: flex;
+        align-content: space-evenly;
+        background-color: yellow;
+        max-width: fit-content;
+    }
+
+    .original-price {
+        display: inline-flex;
+        font-size: 0.7em;
+    }
+
+
 }

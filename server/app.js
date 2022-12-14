@@ -6,6 +6,9 @@ const userRouter = require('./routes/userRoute');
 const categoryRouter = require('./routes/categoryRoute');
 const evaluationRouter = require('./routes/evaluationRoute');
 const authRouter = require('./routes/authRoute');
+const postRouter = require('./routes/postRoute');
+const commentRouter = require('./routes/commentRoute');
+const bookmarkRoute = require('./routes/bookmarkRoute');
 const passport = require('./utils/passport');
 const port = 3000;
 
@@ -18,8 +21,13 @@ app.use(passport.initialize());
 
 app.use('/auth', authRouter);
 // app.use('/user', userRouter);
-app.use('/user', passport.authenticate('jwt', {session: false}), userRouter);
+app.use('/user', userRouter);
 app.use('/category', passport.authenticate('jwt', {session: false}), categoryRouter);
 app.use('/evaluation', passport.authenticate('jwt', {session: false}), evaluationRouter);
+
+app.use(express.static('uploads'));
+
+app.use('/bookmark', bookmarkRoute);
+app.use('/post', postRouter, commentRouter);
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
