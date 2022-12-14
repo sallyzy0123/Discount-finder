@@ -37,7 +37,8 @@ const createBookmarkCards = (bookmarks) => {
         i1.className = "fas fa-bookmark";
 
         // remove the bookmark by click the icon
-        a1.addEventListener('click', () => {
+        a1.addEventListener('click', (event) => {
+          event.stopPropagation();
           // first the icon become light 
           // second the page updated to remove this post
           i1.className = "far fa-bookmark";

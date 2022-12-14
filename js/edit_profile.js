@@ -12,7 +12,7 @@ const getQParam = (param) => {
 const id = getQParam('id');
 
 // select existing html elements
-const formContent = document.querySelector('.form_content');
+const formContent = document.querySelector('#form_content');
 
 // get user data for admin check
 //const user = JSON.parse(sessionStorage.getItem('user'));
@@ -25,32 +25,34 @@ const getUser = async (id) => {
     //     Authorization: 'Bearer ' + sessionStorage.getItem('token'),
     //   },
     // };
-    const response = await fetch(url + '/user' + id);
-    const inputs = formContent.querySelectorAll('input');
-    inputs[0].value = id.Username;
-    inputs[1].value = id.Email;
-    inputs[2].value = id.password;
-    // not sure what to do for photo
-    // const users = await response.json();
+    const response = await fetch(url + '/user/' + id);
+    const user = await response.json();
+    const inputs = document.querySelectorAll('input');
+    inputs[0].value = user.username;
+    inputs[1].value = user.email;
   } catch (e) {
     console.log(e.message);
   }
 };
 
-getUser(1);
+getUser(2);
 
 // submit modify form
 formContent.addEventListener('submit', async (evt) => {
     evt.preventDefault();
     const fd = new FormData(formContent);
-    console.log("fetch: " + fd);
     const fetchOptions = {
-      method: 'POST',
-      body: fd,
+        method: 'PUT',
+        body: fd,
     };
-    const response = await fetch(url + '/user/' + id , fetchOptions);
+    console.log(fetchOptions);
+    const response = await fetch(url + '/user/' + 2 , fetchOptions);
     const json = await response.json();
-    alert(json.message);
+    if (json.error) {
+      alert(json.error.message);
+    } else {
+      alert(json.message);
+    }
     console.log('response', json);
-    //location.href = 'profile.html';
+    // location.href = url + 'profile.html';
 });

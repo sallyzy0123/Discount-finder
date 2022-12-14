@@ -25,10 +25,12 @@ const createUser = async (req, res) => {
 
 const modifyUser = async (req, res) => {
     const user = req.body;
+    user.photo = req.file.filename;
     if(req.params.userId) {
         user.userId = req.params.userId;
     }
     const result = await userModel.updateUserById(user, res);
+    console.log("controller here", user);
     if (result.affectedRows > 0) {
         res.json({message: 'user updated ' + user.userId});
     } else  {

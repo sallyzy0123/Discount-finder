@@ -7,38 +7,30 @@
     <link href="../css/edit_profile.css" rel="stylesheet" />
     <script defer src="/js/edit_profile.js"></script>
     <title>Document</title>
-  </head>
+  </head>\
   <body>
     <section>
       <header>
         <img src="../images/logo.svg" alt="Website logo" width="100%" />
       </header>
       <div class="form">
-        <form class="form_content">
+        <form class="border" action="http://localhost:3000/user/:userId" method="put" 
+          enctype="multipart/form-data" id="form_content">
           <div class="header_content">
             <h1 class="header_text">Edit your profile</h1>
           </div>
-          <div>
             <label class="form_label">Username:</label>
             <input class="border" type="text" name="username" placeholder="Username"/>
-          </div>
-          <div>
             <label class="form_label">Email:</label>
-            <input class="border" type="text" name="username" disabled="disabled" placeholder="Email"/>
-          </div>
-          <div>
+            <input class="border" type="text" name="email" placeholder="Email"/>
             <label class="form_label">Password:</label>
             <input class="border" type="password" name="password" placeholder="password"/>
-          </div>
-          <div>
             <label class="form_label">Photo:</label>
-            <input class="border" type="file" name="profile" accept="image/*" placeholder="Choose file"/>
-          </div>
-          <div>
+            <input class="border" type="file" name="photo" accept="image/*" placeholder="Choose file"/>
             <button class="save_button" type="submit">Save</button>
-          </div>
         </form>
       </div>
     </section>
+    <script src="../js/serialize.js"></script>
   </body>
 </html>
