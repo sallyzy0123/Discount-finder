@@ -4,14 +4,17 @@ body {
     justify-content: center;
     align-items: center;
   }
-  section {
+  /* section {
     height: 1020px;
     width: 375px;
     border: 1px solid #ccc;
     overflow-y: scroll;
-  }
+  } */
   header {
+    display: flex;
+    justify-content: center;
     padding: 20px;
+
   }
   .form {
     display: flex;
@@ -32,6 +35,8 @@ body {
   .header_text {
     margin: 0;
     margin-bottom: 1rem;
+    font-size: 1.5rem;
+    
   }
   /* .header_description {
     font-size: 0.75rem;
@@ -57,3 +62,8 @@ body {
     border-radius: 0.25rem;
     padding: 0.5rem;
   }
+  @media screen and (min-width: 375px) {
+    #logo {
+      width: 50%; 
+    }
+ }

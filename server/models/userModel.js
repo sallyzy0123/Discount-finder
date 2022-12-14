@@ -22,6 +22,31 @@ const getUserById = async (res, userId) => {
     }
   };
 
+  // const getUserLogin = async (user) => {
+  //   try {
+  //     console.log('getUserLogin', user);
+  //     const [rows] = await promisePool.execute(
+  //         'SELECT * FROM user WHERE email = ?;',
+  //         user);
+  //     return rows;
+  //   } catch (e) {
+  //     console.error("error", e.message);
+  //     res.status(500).send(e.message);
+  //   }
+  // };
+
+//     const getUserLogin = async (user) => {
+//     const sql = 'SELECT * FROM user WHERE email = ?';
+//     const [rows] = await promisePool.query(sql, [user]);
+//     return rows.length > 0 ? rows[0] : null;
+// };
+
+  const getUserByEmail = async (email) => {
+    const sql = 'SELECT * FROM user WHERE email = ?';
+    const [rows] = await promisePool.query(sql, [email]);
+    return rows.length > 0 ? rows[0] : null;
+};
+
   const addUser = async (user, res) => {
     try {
       const sql = "INSERT INTO user VALUES (null, ?, ?, ?, ?, ?)";
@@ -61,6 +86,8 @@ const getUserById = async (res, userId) => {
 module.exports = {
   getAllUsers,
   getUserById,
+  // getUserLogin,
+  getUserByEmail,
   addUser,
   deleteUserById,
   updateUserById,

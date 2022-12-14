@@ -4,13 +4,10 @@ body {
     justify-content: center;
     align-items: center;
   }
-  section {
-    height: 1020px;
-    width: 375px;
-    border: 1px solid #ccc;
-    overflow-y: scroll;
-  }
+
   header {
+    display: flex;
+    justify-content: center;
     padding: 20px;
   }
   .form {
@@ -32,6 +29,15 @@ body {
   .header_text {
     margin: 0;
     margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+  #post_add{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+      margin: 0;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
   }
   .header_description {
     font-size: 0.75rem;
@@ -64,3 +70,9 @@ body {
     height: 150px;
     resize: vertical;
   }
+
+  @media screen and (min-width: 375px) {
+    #logo {
+      width: 50%;
+    }
+ }

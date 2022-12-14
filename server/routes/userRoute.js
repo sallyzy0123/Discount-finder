@@ -1,30 +1,25 @@
-'use strict';
-const express = require('express');
-const router = express.Router()
+"use strict";
+const express = require("express");
+const router = express.Router();
+const { body } = require("express-validator");
 const multer = require('multer');
-// const {body} = require('express-validator');
-const userController = require('../controllers/userController');
-
-// const fileFilter = (req, file, cb) => {
-//     // The function should call `cb` with a boolean
-//     // to indicate if the file should be accepted
-//     const acceptedTypes = ['image/jpeg', 'image/png', 'image/gif'];
-//     if (acceptedTypes.includes(file.mimetype)) {
-//       // To accept the file pass `true`, like so:
-//       cb(null, true);
-//     } else {
-//       // To reject this file pass `false`, like so:
-//       cb(null, false);
-//     }
-//   };
+const userController = require("../controllers/userController");
 
 const upload = multer({ dest: 'uploads/'
 // , fileFilter
 });
 
-router.get('/', userController.getUsers)
-    .get('/:userId', userController.getUser)
-    .post('/', userController.createUser)
+router
+   .get("/", userController.getUsers)
+   .get("/token", userController.checkToken)
+   .get("/:userId", userController.getUser)
+   .post(
+      "/",
+      body("name").isLength({ min: 3 }).trim().escape(),
+      body("email").isEmail().normalizeEmail(),
+      body("passwd").isLength({ min: 8 }).trim(),
+      userController.createUser
+   )
     .put('/:userId', 
         upload.single('photo'),
         // body('username').isLength({min: 3}), 
@@ -33,4 +28,4 @@ router.get('/', userController.getUsers)
         userController.modifyUser)
     .delete('/:userId', userController.deleteUser);
 
-module.exports = router
+module.exports = router;

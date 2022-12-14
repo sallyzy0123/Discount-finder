@@ -40,16 +40,16 @@ img {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 30px;
-    margin-left: 3rem;
+    /* margin-left: 3rem; */
  }
 .logo {
-    width: 20rem;
+    /* width: 20rem; */
 }
 .log_out_button {
     border: none;
     background-color: #ffffff00;
     color: gray;
-    font-size: 3rem;;
+    white-space: nowrap;
  }
 /* Profile Section */
 .profile {
@@ -222,7 +222,7 @@ hr {
         margin-top:  1.1rem;
     }
 }
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 375px) {
     .container {
         max-width: 100%;
         margin:0 0;
@@ -246,17 +246,10 @@ hr {
         width: calc(66.666% - 7rem);
         margin-top:  1.1rem;
     }
-    .first_row {
-        margin-bottom: 30px;
-        margin-left: 2rem;
-     }
-    .logo {
-        width: 15rem;
-    }
     .log_out_button {
         border: none;
         background-color: #ffffff00;
         color: gray;
-        font-size: 3rem;;
+        /* font-size: 3rem;; */
      }
 }

@@ -45,4 +45,4 @@ const getPost = async (id) => {
     userIcon.src = post.Photo;
 };
 
-getPost(1);
+getPost(3);

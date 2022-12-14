@@ -2,19 +2,19 @@
 const pool = require("../database/db");
 const promisePool = pool.promise();
 
-const getAllEvaluations = async (res) => {
-  try {
-    const [rows] = await promisePool.query("SELECT likes, dislikes FROM Evaluation");
-    return rows;
-  } catch (e) {
-    res.status(500).send(e.message);
-    console.error("error", e.message);
-  }
-};
+// const getAllEvaluations = async (res) => {
+//   try {
+//     const [rows] = await promisePool.query("SELECT likes, dislikes FROM evaluation");
+//     return rows;
+//   } catch (e) {
+//     res.status(500).send(e.message);
+//     console.error("error", e.message);
+//   }
+// };
 
-const getEvaluationById = async (res, userId) => {
+const getEvaluationById = async (res, postId) => {
     try {
-      const [rows] = await promisePool.query("SELECT userId, username, email, password, photo, role FROM User WHERE userId = ?", [userId]); //the query needs to be changed
+      const [rows] = await promisePool.query("SELECT likes, dislikes FROM evaluation WHERE postId = ?", [postId]); //needs to be checked if corect
       return rows[0];
     } catch (e) {
       console.error("error", e.message);
@@ -22,12 +22,12 @@ const getEvaluationById = async (res, userId) => {
     }
   };
 
-  const addEvaluation = async (evaluation, res) => {
+  const addEvaluation = async (userId, postId, evaluation, res) => {
     try {
-      const sql = "INSERT INTO evaluation VALUES (?, ?, null, null)"; //needs to be checked if corect
-      const values =[evaluation.likes, evaluation.dislikes];
+      const sql = "INSERT INTO evaluation VALUES (?, ?, ?, ?)"; //needs to be checked if corect
+      const values =[evaluation.likes, evaluation.dislikes, userId, postId];
       const [result] = await promisePool.query(sql, values);
-      return result.insertId;
+      return result;
     } catch (e) {
       console.error("error", e.message);
       res.status(500).send(e.message);
@@ -44,23 +44,23 @@ const getEvaluationById = async (res, userId) => {
     }
   };
   
-  const updateUserById = async (user, res) => {
-    try {
-      console.log('modifying user', user);
-      const sql = 'UPDATE user SET username = ?, email = ?, password = ?, photo = ?, role = ? WHERE userId = ?';
-      const values = [user.username, user.email, user.password, user.photo, user.role, user.userId];
-      const [rows] = await promisePool.query(sql, values);
-      return rows;
-    } catch (e) {
-      console.error("error", e.message);
-      res.status(500).send(e.message);
-    }
-  };
+//   const updateEvaluationById = async (evaluation, res) => {
+//     try {
+//       console.log('modifying evaluation', evaluation);
+//       const sql = 'UPDATE evaluation SET likes = ?, dislikes = ? WHERE userId = ? and postId = ?';
+//       const values = [evaluation.likes, evaluation.dislikes, evaluation.userId, evaluation.postId];
+//       const [rows] = await promisePool.query(sql, values);
+//       return rows;
+//     } catch (e) {
+//       console.error("error", e.message);
+//       res.status(500).send(e.message);
+//     }
+//   };
 
 module.exports = {
-  getAllUsers,
-  getUserById,
-  addUser,
-  deleteUserById,
-  updateUserById,
+//   getAllEvaluations,
+  getEvaluationById,
+  addEvaluation,
+  deleteEvaluationById,
+//   updateEvaluationById,
 };
