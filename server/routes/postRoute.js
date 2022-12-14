@@ -20,7 +20,7 @@ const postController = require('../controllers/postController');
 // };
 
 const upload = multer({ dest: 'uploads/'
-    // , fileFilter
+// , fileFilter
 });
 
 router.get('/', postController.getPosts)
@@ -28,8 +28,8 @@ router.get('/', postController.getPosts)
     .get('/user/:userId', postController.getPostsByUserId )
     .post('/',
         upload.single('Picture'),
-        // body('name').isLength({min: 3}).trim().escape(),
-        // body('description').isDate(),
+        // body('name')..isAlphanumeric(),
+        // body('description').isAlphanumeric(),
         // body('category').isFloat({min: 0.1, max: 30}),
         postController.createPost)
     .put('/:postId', 
