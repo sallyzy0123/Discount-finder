@@ -5,7 +5,7 @@ const url = 'http://localhost:3000';
 const forthRow = document.querySelector('.forth_row');
 const searchButton = document.querySelector('.search_button');
 const categoryList = document.querySelector('.category-list');
-const slideDownList = document.querySelector('.categorySlideDown')
+const slideDownList = document.querySelector('.categorySlideDown');
 let posts = [];
 // const profile = document.querySelector('.profile');
 
@@ -29,6 +29,7 @@ searchButton.addEventListener("click", (e) => {
     forthRow.innerHTML='';
     createPostCards(filteredPosts);
 })
+
 
 // sort bar
 const dateAsc = document.querySelector('.sort-date-asc');
@@ -159,6 +160,7 @@ const getPosts = async () => {
       const response = await fetch(url + '/post');
       posts = await response.json();
       createPostCards(posts);
+      console.log(posts);
     } catch (e) {
       console.log(e.message);
     }
@@ -167,7 +169,7 @@ const getPosts = async () => {
 getPosts();
 
 const createCategoryOptions = (categories) => {
-    // clear user list
+    // clear category list
     categoryList.innerHTML = '';
     categories.forEach((category) => {
         console.log(category)
@@ -176,7 +178,15 @@ const createCategoryOptions = (categories) => {
         const a = document.createElement('a');
         a.href = url + '/category/' + category.categoryId;
         a.textContent = category.categoryName;
-        //TODO: same page as main, but for categories
+
+        // filter the category by clicking the filter bar
+        option.addEventListener('click', (e) => {
+            console.log(a.href);
+            const postlist = posts.filter(post => post.CategoryId == category.categoryId);
+            console.log(postlist);
+            forthRow.innerHTML='';
+            createPostCards(postlist);
+        });
         option.classList.add('border');
         option.appendChild(a);
         categoryList.appendChild(option);
