@@ -15,7 +15,7 @@ loginForm.addEventListener('submit', async (evt) => {
         },
         body: JSON.stringify(data),
     };
-
+console.log("whatever this problem", fetchOptions)
     const response = await fetch(url + '/auth/login', fetchOptions);
     const json = await response.json();
     console.log('login response', json);
@@ -25,6 +25,6 @@ loginForm.addEventListener('submit', async (evt) => {
         // save token
         sessionStorage.setItem('token', json.token);
         sessionStorage.setItem('user', JSON.stringify(json.user));
-        // location.href = 'front.html';
+        location.href = '../html/main_page.html';
     }
 });
