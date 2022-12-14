@@ -1,11 +1,6 @@
 "use strict";
 const evaluationModel = require("../models/evaluationModel");
 
-// const getEvaluations = async (req, res) => {
-//     const evaluations = await evaluationModel.getAllEvaluations(res);
-//     res.json(evaluations);
-// };
-
 const getEvaluation = async (req, res) => {
     const evaluation = await evaluationModel.getEvaluationById(res, req.params.postId);
     if (evaluation) {
@@ -22,18 +17,6 @@ const createEvaluation = async (req, res) => { //I don't know if correct
     res.status(201).json({userId: result});
 };
 
-// const modifyEvaluation = async (req, res) => {
-//     const evaluation = req.body;
-//     if(req.params.userId) {
-//         evaluation.userId = req.params.userId;
-//     }
-//     const result = await evaluationModel.updateEvaluationById(evaluation, res);
-//     if (result.affectedRows > 0) {
-//         res.json({message: 'evaluation updated ' + evaluation.userId});
-//     } else  {
-//         res.status(404).json({message: 'no changes made'});
-//     }
-// };
 
 const deleteEvaluation = async (req, res) => {
     const result =  await evaluationModel.deleteEvaluationById(req.user.userId, req.post.postId, res);
@@ -46,9 +29,7 @@ const deleteEvaluation = async (req, res) => {
 };
 
 module.exports = {
-   getEvaluation,
-//    getEvaluations,
-//    modifyEvaluation,
-   createEvaluation,
-   deleteEvaluation,
+    getEvaluation,
+    createEvaluation,
+    deleteEvaluation,
 };

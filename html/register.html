@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="../css/register.css" rel="stylesheet" />
+    <script defer src="../js/register.js"></script>
+    <script defer src="../js/serialize.js"></script>
     <title>Document</title>
   </head>
   <body>
@@ -12,25 +14,17 @@
         <a href="../html/main_page.html"><img id="logo" src="../images/logo.svg" alt="Website logo" width="100%" /></a>
       </header>
       <div class="form">
-        <form class="form_content">
-          <div class="header_content">
-            <h1 class="header_text">Create a new account</h1>
-          </div>
-          <div>
+        <div class="header_content">
+          <h1 class="header_text">Create a new account</h1>
+        </div>
+        <form class="form_content" action="http://localhost:3000/auth/register" method="post" id="addUserForm">
             <label class="form_label">Username:</label>
-            <input class="border" type="text" name="username" />
-          </div>
-          <div>
+            <input class="border" type="text" required name="username" />
             <label class="form_label">Email:</label>
-            <input class="border" type="text" name="email" />
-          </div>
-          <div>
+            <input class="border" type="email" required name="email" />
             <label class="form_label">Password:</label>
-            <input class="border" type="password" name="password" />
-          </div>
-          <div>
+            <input class="border" type="password" required name="password" />
             <button class="register_button" type="submit">Register</button>
-          </div>
         </form>
       </div>
   </body>

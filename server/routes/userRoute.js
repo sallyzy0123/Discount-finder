@@ -15,16 +15,16 @@ router
    .get("/:userId", userController.getUser)
    .post(
       "/",
-      body("name").isLength({ min: 3 }).trim().escape(),
-      body("email").isEmail().normalizeEmail(),
-      body("passwd").isLength({ min: 8 }).trim(),
+      body('username').isLength({ min: 3 }).trim().escape(),
+      body('email').isEmail().normalizeEmail(),
+      body('password').isLength({ min: 8 }).trim(),
       userController.createUser
    )
     .put('/:userId', 
         upload.single('photo'),
-        // body('username').isLength({min: 3}), 
-        // body('email').isEmail(), 
-        // body('password').isLength({min: 8}), 
+        body('username').isLength({ min: 3 }).trim().escape(),
+        body('email').isEmail().normalizeEmail(),
+        body('password').isLength({ min: 8 }).trim(),
         userController.modifyUser)
     .delete('/:userId', userController.deleteUser);
 

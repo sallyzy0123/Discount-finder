@@ -14,6 +14,8 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "express-validation": "^4.1.0",
     "express-validator": "^6.14.2",
     "jquery": "^3.6.1",
     "jquery-serializejson": "^3.2.1",

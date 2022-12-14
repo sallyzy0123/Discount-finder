@@ -1,5 +1,7 @@
  "use strict";
 const userModel = require("../models/userModel");
+const jwt = require("jsonwebtoken");
+const passport = require("passport");
 
 const getUsers = async (req, res) => {
     const users = await userModel.getAllUsers(res);
@@ -16,8 +18,13 @@ const getUser = async (req, res) => {
 };
 
 const createUser = async (req, res) => {
-    console.log('creating new user:', req.body);
+    console.log('Creating a new user:', req.body);
     const newUser = req.body;
+    newUser.photo = req.file.filename;
+    if (!newUser.role) {
+        // default user role (normal user)
+        newUser.role = 1;
+    }
     const result = await userModel.addUser(newUser, res);
     res.status(201).json({userId: result});
 };
@@ -45,10 +52,11 @@ const deleteUser = async (req, res) => {
         res.status(404).json({message: 'user was already deleted'});
     }
 };
+
 const checkToken = (req, res) => {
-    // delete req.user.password; //doesn't allow the password to be seen in the browser's console
+    delete req.user.password; //doesn't allow the password to be seen in the browser's console
     res.json({user: req.user});
-  }
+};
 
 module.exports = {
    getUser,
@@ -56,5 +64,5 @@ module.exports = {
    modifyUser,
    createUser,
    deleteUser,
-   checkToken,
+   checkToken
 };

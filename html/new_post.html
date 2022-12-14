@@ -5,9 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="../css/new_post_page.css" rel="stylesheet" />
+    <script defer src="../js/new-post.js"></script>
+    <script defer src="/js/check-login.js"></script>
+    <script defer src="../js/serialize.js"></script>
     <title>Document</title>
 </head>
 <body>
+<section>
+    <header>
+        <img src="../images/logo.svg" alt="Website logo" width="100%" />
+    </header>
+    <div class="container">
 
 <div class="container">
     <header>
@@ -24,7 +32,7 @@
                 <label class="form_label">Product location:</label>
                 <input class="border" type="text" name="Location" required placeholder="Location" />
                 <label class="form_label">Category:</label>
-                <select class="border add-category" required name="Category">
+                <select class="border add-category" required name="CategoryId">
                     <option value="">Select category</option>
                 </select>
                 <label class="form_label">Discounted price:</label>
@@ -37,15 +45,14 @@
                 <input class="border" type="file" name="Picture" accept="image/*"
                        required placeholder="Choose file">
                 <label class="form_label">Add a product description:</label> <br>
-                <textarea name="Description" maxlength="1000" required
+                <textarea name="Description" maxlength="1000"
                           placeholder="Write a product description" spellcheck="true"></textarea>
                 <button class="border" type="submit">Upload</button>
             </form>
         </div>
-    </div>
 
-    <script src="../js/new-post.js"></script>
-</div>
+    </div>
+</section>
 
 </body>
 </html>
