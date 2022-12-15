@@ -15,6 +15,7 @@
             },
         };
         const response = await fetch(url + '/user/token', fetchOptions);
+        console.log(response.ok, response);
         if (!response.ok) {
             location.href = 'logout.html';
         } else {

@@ -10,7 +10,7 @@ const url = 'http://localhost:3000'; // change url when uploading to server
         sessionStorage.removeItem('token');
         sessionStorage.removeItem('user');
         alert('You have logged out');
-        location.href = '../html/sign_in_page.html';
+        location.href = '../html/main_page.html';
     } catch (e) {
         console.log(e.message);
     }

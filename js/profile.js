@@ -6,8 +6,7 @@ const gallery = document.querySelector('.gallery');
 const profile = document.querySelector('.profile');
 
 // get user data 
-// const user = JSON.parse(sessionStorage.getItem('user'));
-
+const user = JSON.parse(sessionStorage.getItem('user'));
 
 // create post cards
 const createPostCards = (posts) => {
@@ -135,12 +134,12 @@ const createUserProfileCard = (users) => {
 
 const getPosts = async () => {
     try {
-      // const fetchOptions = {
-      //   headers: {
-      //     Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-      //   },
-      // };
-      const response = await fetch(url + '/post');
+      const fetchOptions = {
+        headers: {
+          Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+        },
+      };
+      const response = await fetch(url + '/post', fetchOptions);
       const posts = await response.json();
       console.log(posts);
       createPostCards(posts);
@@ -153,13 +152,12 @@ const getPosts = async () => {
 // need to check
 const getUsers = async () => {
   try {
-    // const fetchOptions = {
-    //   headers: {
-    //     Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-    //   },
-    // };
-    // const response = await fetch(url + '/user', fetchOptions);
-    const response = await fetch(url + '/user');
+    const fetchOptions = {
+      headers: {
+        Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+      },
+    };
+    const response = await fetch(url + '/user', fetchOptions);
     const users = await response.json();
     console.log(users)
     createUserProfileCard(users);

@@ -23,10 +23,10 @@ app.use(cors())
 
 
 app.use('/auth', authRouter)
-    .use('/bookmark', bookmarkRoute)
+    .use('/bookmark', passport.authenticate('jwt', {session: false}), bookmarkRoute)
     .use('/user', passport.authenticate('jwt', {session: false}), userRouter)
     .use('/category', categoryRouter)
-    .use('/evaluation', passport.authenticate('jwt', {session: false}), evaluationRouter)
+    .use('/evaluation', evaluationRouter)
     .use('/post', postRouter)
     .use('/comment', commentRouter)
 

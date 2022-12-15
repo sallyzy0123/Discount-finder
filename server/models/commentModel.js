@@ -16,24 +16,11 @@ const getCommentsByPostId = async (res, postId) => {
     }
 };
 
-// const addComment = async (comment, user, postId, res) => {
-//     try {
-//         const date = new Date().toJSON().slice(0, 10);
-//         const sql = 'insert into comment values (null, ?, ?, ?, ?)';
-//         const values = [user.UserId, post.PostId, date, comment.Text];
-//         const [result] = await promisePool.query(sql, values);
-//         return result.insertId;
-//     } catch (e) {
-//         console.error("error", e.message);
-//         res.status(500).send(e.message);
-//     }
-// };
-
-const addComment = async (postId, comment, res) => {
+const addComment = async (comment, postId, user, res) => {
     try {
         const date = new Date().toJSON().slice(0, 10);
         const sql = 'insert into comment values (null, ?, ?, ?, ?)';
-        const values = [comment.UserId, postId, date, comment.Text];
+        const values = [user, postId, date, comment.text];
         const [result] = await promisePool.query(sql, values);
         return result.insertId;
     } catch (e) {

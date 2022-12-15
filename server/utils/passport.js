@@ -5,7 +5,6 @@ const passportJWT = require("passport-jwt");
 const JWTStrategy = passportJWT.Strategy;
 const ExtractJWT = passportJWT.ExtractJwt;
 const bcrypt = require('bcryptjs');
-// const { getUserLogin } = require("../models/userModel");
 const { getUserByEmail } = require("../models/userModel");
 const dotenv = require("dotenv");
 dotenv.config();

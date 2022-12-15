@@ -1,12 +1,8 @@
 'use strict';
 const url = 'http://localhost:3000'; // change url when uploading to server
 
-// // get query parameter
-// const getQParam = (param) => {
-//     const queryString = window.location.search;
-//     const urlParams = new URLSearchParams(queryString);
-//     return urlParams.get(param);
-// };
+// get user data
+const user = JSON.parse(sessionStorage.getItem('user'));
 
 // select existing html elements
 const addForm = document.querySelector('#addPostForm');
@@ -29,7 +25,12 @@ const createCategoryOptions = (categories) => {
 // get categories to make options
 const getCategories = async () => {
     try {
-        const response = await fetch(url + '/category');
+        const fetchOptions = {
+            headers: {
+                Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+            },
+        };
+        const response = await fetch(url + '/category', fetchOptions);
         const categories = await response.json();
         console.log(categories)
         createCategoryOptions(categories);
@@ -44,10 +45,12 @@ getCategories();
 addForm.addEventListener('submit', async (evt) => {
     evt.preventDefault();
     const fd = new FormData(addForm);
-    console.log("fetch: " + fd);
     const fetchOptions = {
         method: 'POST',
-        body: fd,
+        headers: {
+            Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+        },
+        body: fd
     };
     const response = await fetch(url + '/post', fetchOptions);
     const json = await response.json();

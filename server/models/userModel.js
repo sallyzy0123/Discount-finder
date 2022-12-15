@@ -64,19 +64,6 @@ const getUserById = async (res, userId) => {
     }
   };
 
-  const getUserLogin = async (user) => {
-    try {
-      console.log('getUserLogin()', user);
-      const [rows] = await promisePool.execute(
-          'SELECT * FROM user WHERE email = ?;',
-          user);
-      return rows;
-    } catch (e) {
-      console.log('error', e.message);
-      res.status(500).send(e.message);
-    }
-  };
-
 module.exports = {
   getAllUsers,
   getUserById,
@@ -84,5 +71,4 @@ module.exports = {
   addUser,
   deleteUserById,
   updateUserById,
-  getUserLogin
 };

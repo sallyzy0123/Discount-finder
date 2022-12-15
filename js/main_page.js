@@ -6,12 +6,32 @@ const url = 'http://localhost:3000';
 const forthRow = document.querySelector('.forth_row');
 const searchButton = document.querySelector('.search_button');
 const categoryList = document.querySelector('.category-list');
-const slideDownList = document.querySelector('.categorySlideDown')
+const slideDownList = document.querySelector('.categorySlideDown');
+const navBtns = document.querySelector('.nav-buttons');
+const loginBtn = document.createElement('button');
+const profileBtn = document.createElement('button');
+const loginLink = document.createElement('a');
+const profileLink = document.createElement('a');
+
 let posts = [];
-// const profile = document.querySelector('.profile');
 
 // get user data 
-// const user = JSON.parse(sessionStorage.getItem('user'));
+const user = JSON.parse(sessionStorage.getItem('user'));
+
+if (user) {
+    loginLink.href = "./logout.html";
+    loginLink.textContent = "Log out";
+    profileLink.href = "./profile.html";
+    profileLink.textContent = "My profile";
+    loginBtn.appendChild(loginLink);
+    profileBtn.appendChild(profileLink);
+    navBtns.append(profileBtn, loginBtn);
+} else {
+    loginLink.href = "./sign_in_page.html";
+    loginLink.textContent = "Log in";
+    loginBtn.appendChild(loginLink);
+    navBtns.appendChild(loginBtn);
+}
 
 // the search bar
 searchButton.addEventListener("click", (e) => {
@@ -120,12 +140,12 @@ const createPostCards = (posts) => {
 
 const getPosts = async () => {
     try {
-      // const fetchOptions = {
-      //   headers: {
-      //     Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-      //   },
-      // };
-      const response = await fetch(url + '/post');
+      const fetchOptions = {
+        headers: {
+          Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+        },
+      };
+      const response = await fetch(url + '/post', fetchOptions);
       posts = await response.json();
       createPostCards(posts);
     } catch (e) {
@@ -155,7 +175,12 @@ const createCategoryOptions = (categories) => {
 // get categories to make options
 const getCategories = async () => {
     try {
-        const response = await fetch(url + '/category');
+        const fetchOptions = {
+            headers: {
+                Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+            },
+        };
+        const response = await fetch(url + '/category', fetchOptions);
         const categories = await response.json();
         createCategoryOptions(categories);
     } catch (e) {

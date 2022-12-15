@@ -6,7 +6,7 @@ const gallery = document.querySelector('.gallery');
 const profile = document.querySelector('.profile');
 
 // get user data 
-// const user = JSON.parse(sessionStorage.getItem('user'));
+const user = JSON.parse(sessionStorage.getItem('user'));
 
 // create gallery cards
 const createBookmarkCards = (bookmarks) => {
@@ -82,15 +82,6 @@ const createBookmarkCards = (bookmarks) => {
     })
 }
 
-// const user = [
-//   {
-//     "UserId": 1,
-//     "Username": "coldwinter",
-//     "Email": "coldwinter@gamil.com",
-//     "Password": "coldwinter123",
-//     "Photo": "https://divedigital.id/wp-content/uploads/2022/07/2-Aesthetic-Cat-with-Sleepy-Mask.jpg"
-//   }];
-
 const createUserProfileCard = (users) => {
   // add the image section
   const div1 = document.createElement('div');
@@ -129,12 +120,12 @@ const createUserProfileCard = (users) => {
 
 const getBookmarks = async () => {
     try {
-      // const fetchOptions = {
-      //   headers: {
-      //     Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-      //   },
-      // };
-      const response = await fetch(url + '/bookmark');
+      const fetchOptions = {
+        headers: {
+          Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+        },
+      };
+      const response = await fetch(url + '/bookmark', fetchOptions);
       const bookmarks = await response.json();
       console.log(bookmarks);
       createBookmarkCards(bookmarks);
@@ -147,13 +138,12 @@ const getBookmarks = async () => {
 // need to check
 const getUsers = async () => {
   try {
-    // const fetchOptions = {
-    //   headers: {
-    //     Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-    //   },
-    // };
-    // const response = await fetch(url + '/user', fetchOptions);
-    const response = await fetch(url + '/user');
+    const fetchOptions = {
+      headers: {
+        Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+      },
+    };
+    const response = await fetch(url + '/user', fetchOptions);
     const users = await response.json();
     console.log(users)
     createUserProfileCard(users);

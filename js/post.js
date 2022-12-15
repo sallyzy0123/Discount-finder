@@ -11,6 +11,9 @@ const getQParam = (param) => {
 // get id from address
 const post_id = getQParam('id');
 
+// get user data
+const user = JSON.parse(sessionStorage.getItem('user'));
+
 // select existing html elements
 const categoryName = document.querySelector('.category-name');
 const postName = document.querySelector('.post-name');
@@ -29,7 +32,12 @@ const deleteBtn = document.querySelector('#delete-icon');
 
 // add existing cat data to form
 const getPost = async (id) => {
-    const response = await fetch(url + '/post/' + id);
+    const fetchOptions = {
+        headers: {
+            Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+        },
+    };
+    const response = await fetch(url + '/post/' + id, fetchOptions);
     const post = await response.json();
     a.href = url + '/category/' + post.CategoryId;
     a.textContent = post.CategoryName;
@@ -46,24 +54,26 @@ const getPost = async (id) => {
     userIcon.src = post.Photo;
     console.log(post);
 
-    deleteBtn.addEventListener('click', async () => {
-        const fetchOptions = {
-            method: 'DELETE'
-            // headers: {
-            //     Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-            // },
-        };
-        try {
-            const response = await fetch(url + '/post/' + post.PostId, fetchOptions);
-            const json = await response.json();
-            console.log('delete response', json);
-            location.href = '../html/main_page.html';
-        } catch (e) {
-            console.log(e.message);
-        }
-    });
-
-    
+    if (post.UserId == user.UserId) {
+        deleteBtn.addEventListener('click', async () => {
+            const fetchOptions = {
+                method: 'DELETE',
+                headers: {
+                    Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+                },
+            };
+            try {
+                const response = await fetch(url + '/post/' + post.PostId, fetchOptions);
+                const json = await response.json();
+                console.log('delete response', json);
+                location.href = '../html/main_page.html';
+            } catch (e) {
+                console.log(e.message);
+            }
+        });
+    } else {
+        deleteBtn.style.visibility = "hidden";
+    }
 };
 
 getPost(post_id);

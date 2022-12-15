@@ -1,27 +1,30 @@
 'use strict';
 
 // select existing html elements
-const addForm = document.querySelector('#new-comment');
+const addForm = document.querySelector('#addCommentForm');
 const commentSection = document.querySelector('.comment-section');
 const commentNumber = document.querySelector(".comment-number")
 
 // submit add comment form
-addForm.addEventListener('submit', async (evt) => {
-    evt.preventDefault();
-    const fd = new FormData(addForm);
-    const fetchOptions = {
-        method: 'POST',
-        headers: {
-            Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-        },
-        body: fd,
-    };
-    const response = await fetch(url + '/comment/'+ postId, fetchOptions);
-    const json = await response.json();
-    alert(json.message);
-    location.href = 'front.html';
-});
-
+if (user) {
+    addForm.addEventListener('submit', async (evt) => {
+        evt.preventDefault();
+        const fd = new FormData(addForm);
+        const fetchOptions = {
+            method: 'POST',
+            headers: {
+                Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+            },
+            body: fd
+        };
+        const response = await fetch(url + '/comment/'+ post_id, fetchOptions);
+        const json = await response.json();
+        alert(json.message);
+        getComments(post_id);
+    });
+} else {
+    addForm.ariaDisabled;
+}
 
 const populateComments = (comments) => {
     // clear comment list
@@ -68,7 +71,12 @@ function showCommentNum(comments) {
 
 const getComments = async (id) => {
     try {
-        const response = await fetch(url + '/comment/' + id);
+        const fetchOptions = {
+            headers: {
+                Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+            },
+        };
+        const response = await fetch(url + '/comment/' + id, fetchOptions);
         const comments = await response.json();
         populateComments(comments);
         showCommentNum(comments);
@@ -76,4 +84,4 @@ const getComments = async (id) => {
         console.log(e.message);
     }
 };
-getComments(1);
+getComments(post_id);

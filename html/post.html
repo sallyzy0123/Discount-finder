@@ -5,11 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="../css/post.css" rel="stylesheet">
+    <script defer src="../js/serialize.js"></script>
     <script defer src="../js/post.js"></script>
     <script defer src="../js/comments.js"></script>
     <script defer src="../js/evaluation.js"></script>
-    <script defer src="/js/check-login.js"></script>
-    <script defer src="../js/serialize.js"></script>
     <script src="https://kit.fontawesome.com/9571e53263.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
@@ -140,7 +139,7 @@
         <div class="add-comment">
             <form action="http://localhost:3000/post/:postId/comment" method="post" class="border"
                   enctype="multipart/form-data" id="addCommentForm">
-            <textarea id="new-comment" maxlength="1000" placeholder="Write your comment here..." spellcheck="true"></textarea>
+                <textarea id="new-comment" maxlength="1000" name="text" placeholder="Write your comment here..." spellcheck="true"></textarea>
                 <button class="border" type="submit">Send</button>
             </form>
         </div>

@@ -21,7 +21,12 @@ function showLikesDislikes(evaluations) {
 // get categories to make options
 const getEvaluation = async (id) => {
     try {
-        const response = await fetch(url + '/evaluation/' + id);
+        const fetchOptions = {
+        headers: {
+            Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+        },
+    };
+        const response = await fetch(url + '/evaluation/' + id, fetchOptions);
         const evaluations = await response.json();
         showLikesDislikes(evaluations);
     } catch (e) {

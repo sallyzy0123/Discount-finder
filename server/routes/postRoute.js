@@ -5,6 +5,7 @@ const multer = require('multer');
 // const {body} = require('express-validator');
 
 const postController = require('../controllers/postController');
+const passport = require("../utils/passport");
 
 // const fileFilter = (req, file, cb) => {
 //     // The function should call `cb` with a boolean
@@ -25,13 +26,13 @@ const upload = multer({ dest: 'uploads/'
 
 router.get('/', postController.getPosts)
     .get('/:postId', postController.getPost)
-    .post('/',
+    .post('/', passport.authenticate('jwt', {session: false}),
         upload.single('Picture'),
         // body('name').isLength({min: 3}).trim().escape(),
         // body('description').isDate(),
         // body('category').isFloat({min: 0.1, max: 30}),
         postController.createPost)
-    .put('/:postId', postController.modifyPost) // TODO: add validators, the same as post
-    .delete('/:postId', postController.deletePost);
+    .put('/:postId', passport.authenticate('jwt', {session: false}), postController.modifyPost)
+    .delete('/:postId', passport.authenticate('jwt', {session: false}), postController.deletePost);
 
 module.exports = router;
