@@ -7,16 +7,9 @@ const profile = document.querySelector('.profile');
 
 // get user data
 const user = JSON.parse(sessionStorage.getItem('user'));
-
-// // get query parameter
-// const getQParam = (param) => {
-//   const queryString = window.location.search;
-//   const urlParams = new URLSearchParams(queryString);
-//   return urlParams.get(param);
-// };
-//
-// // get id from address
-// const userId = getQParam('id');
+const user_Id = user.UserId;
+console.log(user);
+console.log(user_Id);
 
 // create post cards
 const createPostCards = (posts) => {
@@ -57,7 +50,7 @@ const createPostCards = (posts) => {
         img.className = "gallery-image";
         // need to check
         //img.src = url + 'thumbnails/' + posts[i].picutre;
-        img.src = post.Picture;
+        img.src = url + '/' + post.Picture;
         img.alt = post.Name;
 
         // open the main post page by click the image
@@ -106,24 +99,25 @@ const createPostCards = (posts) => {
 }
 
 
-const createUserProfileCard = (users) => {
+const createUserProfileCard = (user) => {
   // add the image section
+  console.log(user);
   const div1 = document.createElement('div');
   div1.className = "profile-image";
   const img1 = document.createElement('img');
   img1.className = "profileImage";
-  img1.src = users[user.UserId].photo;
-  img1.alt = users[user.UserId].username;
+  img1.src = url + '/' + user.photo;
+  img1.alt = user.username;
 
   // add the user info section
   const div2 = document.createElement('div');
   div2.className = "profile-user-settings";
   const p1 = document.createElement('p');
   p1.className = "profile-user-name";
-  p1.innerHTML = users[user.user].username;
+  p1.innerHTML = user.username;
   const p2 = document.createElement('p');
   p2.className = "profile-user-email";
-  p2.innerHTML = users[2].email;
+  p2.innerHTML = user.email;
 
   // add the edit button
   const button = document.createElement('button');
@@ -142,40 +136,38 @@ const createUserProfileCard = (users) => {
   div2.append(p1, p2, button);
 }
 
-const getPosts = async () => {
+const getPosts = async (id) => {
     try {
       const fetchOptions = {
         headers: {
           Authorization: 'Bearer ' + sessionStorage.getItem('token'),
         },
       };
-      const response = await fetch(url + '/post', fetchOptions);
-      const posts = await response.json();
-      console.log(posts);
-      createPostCards(posts);
+      const response = await fetch(url + '/post/user/' + id, fetchOptions);
+      const post = await response.json();
+      console.log(post);
+      createPostCards(post);
   } catch (e) {
       console.log(e.message);
   }
 };
-getPosts(user.UserId);
+getPosts(user_Id);
 
-// here is get user profile
-// need to check
-const getUsers = async () => {
+// here is get user profile 
+const getUser = async (id) => {
   try {
     const fetchOptions = {
       headers: {
         Authorization: 'Bearer ' + sessionStorage.getItem('token'),
       },
     };
-    const response = await fetch(url + '/user', fetchOptions);
-    const users = await response.json();
-    console.log(users)
-    createUserProfileCard(users);
+    const response = await fetch(url + '/user/' + id, fetchOptions);
+    const user = await response.json();
+    createUserProfileCard(user);
   } catch (e) {
     console.log(e.message);
   }
 }
 
-getUsers();
-// getPosts();
+getUser(user_Id);
+
