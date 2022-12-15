@@ -67,7 +67,7 @@ img {
     margin-right: 3rem;
 }
 .profile-image img {
-    border-radius: 50%;
+    border-radius: 100%;
     width:14rem;
 }
 .profile-user-settings {
@@ -238,4 +238,15 @@ hr {
         background-color: #ffffff00;
         color: gray;
      }
+     .profile-user-name {
+        display: inline-block;
+        margin:1rem auto;
+        font-size: 1.5rem;
+        font-weight: 300;
+    }
+    .profile-user-email {
+        font-size: 1.5rem;
+        margin:1rem auto;
+    }
+
 }

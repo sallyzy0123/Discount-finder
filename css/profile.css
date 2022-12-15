@@ -40,11 +40,8 @@ img {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 30px;
-    /* margin-left: 3rem; */
  }
-.logo {
-    /* width: 20rem; */
-}
+
 .log_out_button {
     border: none;
     background-color: #ffffff00;
@@ -252,4 +249,14 @@ hr {
         color: gray;
         /* font-size: 3rem;; */
      }
+     .profile-user-name {
+        display: inline-block;
+        margin:1rem auto;
+        font-size: 1.5rem;
+        font-weight: 300;
+    }
+    .profile-user-email {
+        font-size: 1.5rem;
+        margin:1rem auto;
+    }
 }

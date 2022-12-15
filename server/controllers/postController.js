@@ -37,7 +37,9 @@ const createPost = async (req, res) => {
 };
 
 const deletePost = async (req, res) => {
-    const result = await postModel.deletePostById(req.params.postId, req.user.userId, req.user.role, res);
+    
+    const result = await postModel.deletePostById(req.params.postId, req.user.userId, req.user.Role, res);
+    console.log(req.user.userId);
     console.log('post deleted', result)
     if (result.affectedRows > 0) {
         res.json({message: 'post deleted'});
@@ -52,7 +54,8 @@ const modifyPost = async (req, res) => {
     if (req.params.postId) {
         post.id = req.params.postId;
     }
-    const result = await postModel.updatePostById(post, req.user.userId, req.user.role, res);
+    const result = await postModel.updatePostById(post, req.user.UserId, req.user.Role, res);
+    console.log(req.user);
     if (result.affectedRows > 0) {
         res.json({message: 'post modified', postId: post.id});
     } else {

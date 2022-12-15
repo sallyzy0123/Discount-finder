@@ -1,77 +1,82 @@
 body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
 
-  header {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-  }
-  .form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .form_content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 80%;
-    height: 100%;
-  }
-  .header_content {
-    text-align: center;
-  }
-  .header_text {
-    margin: 0;
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
-  }
-  #post_add{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-      margin: 0;
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-  }
-  .header_description {
-    font-size: 0.75rem;
-    margin-bottom: 20px;
-  }
-  .form_label {
-    display: inline-block;
-    margin-bottom: 0.25rem;
-  }
-  .border {
-    display: block;
-    width: 90%;
-    border: 1px solid gray;
-    border-radius: 0.25rem;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-  }
-  .submit_button {
-    display: block;
-    width: 100%;
-    background: gray;
-    border: 0;
-    border-radius: 0.25rem;
-    padding: 0.5rem;
-  }
+header {
+   display: flex;
+   justify-content: center;
+   padding: 20px;
+}
+.form {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+.form_content {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   width: 80%;
+   height: 100%;
+}
+.header_content {
+   text-align: center;
+}
+.header_text {
+   margin: 0;
+   margin-bottom: 1rem;
+   font-size: 1.5rem;
+}
+#post_add {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   margin: 0;
+   margin-bottom: 1rem;
+   font-size: 1.5rem;
+}
+.header_description {
+   font-size: 0.75rem;
+   margin-bottom: 20px;
+}
+.form_label {
+   display: inline-block;
+   margin-bottom: 0.25rem;
+}
+.border {
+   display: block;
+   width: 90%;
+   border: 1px solid gray;
+   border-radius: 0.25rem;
+   padding: 0.5rem;
+   margin-bottom: 1rem;
+}
+.submit_button {
+   display: block;
+   width: 100%;
+   background: gray;
+   border: 0;
+   border-radius: 0.25rem;
+   padding: 0.5rem;
+}
 
-  textarea {
-    width: 300px;
-    height: 150px;
-    resize: vertical;
-  }
+textarea {
+   min-width: 300px;
+   max-width: 400px;
+   height: 150px;
+   resize: vertical;
+}
+a {
+  display: flex;
+  justify-content: center;
+}
 
-  @media screen and (min-width: 375px) {
-    #logo {
-      width: 50%;
+@media screen and (min-width: 375px) {
+   #logo {
+      width: 20%; 
     }
- }
+}

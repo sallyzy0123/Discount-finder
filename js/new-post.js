@@ -45,6 +45,9 @@ getCategories();
 addForm.addEventListener('submit', async (evt) => {
     evt.preventDefault();
     const fd = new FormData(addForm);
+    for (let obj of fd) {
+        console.log(obj);
+      }
     const fetchOptions = {
         method: 'POST',
         headers: {

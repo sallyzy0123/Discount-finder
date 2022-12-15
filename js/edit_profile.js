@@ -47,5 +47,5 @@ formContent.addEventListener('submit', async (evt) => {
       alert(json.message);
     }
     console.log('response', json);
-    location.href = 'profile.html';
+    location.href = url + 'profile.html';
 });
