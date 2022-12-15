@@ -32,7 +32,7 @@ const createPost = async (req, res) => {
     console.log('Creating a new post:', req.body);
     const newPost = req.body;
     newPost.Picture = req.file.filename;
-    const result = await postModel.addPost(newPost, res);
+    const result = await postModel.addPost(newPost, req.user.UserId, res);
     res.status(201).json({postId: result});
 };
 

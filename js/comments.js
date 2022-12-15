@@ -19,7 +19,6 @@ if (user) {
         };
         const response = await fetch(url + '/comment/'+ post_id, fetchOptions);
         const json = await response.json();
-        alert(json.message);
         getComments(post_id);
     });
 } else {
@@ -61,7 +60,7 @@ const populateComments = (comments) => {
         commentText.textContent = comment.Text;
         commentDate.textContent = comment.Date.slice(0, 10);
         commentUsername.textContent = comment.Username;
-        commentUserPic.src = comment.Photo;
+        commentUserPic.src = url + '/' + comment.Photo;
     });
 };
 

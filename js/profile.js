@@ -41,14 +41,14 @@ const createPostCards = (posts) => {
         })
 
         // remove the post by click the bin icon
-        i2.addEventListener('clikc', () => {
+        i2.addEventListener('click', () => {
             // remove this post and update the page
         })
 
         // add the image
         const img = document.createElement('img');
         img.className = "gallery-image";
-        // need to check 
+        // need to check
         //img.src = url + 'thumbnails/' + posts[i].picutre;
         img.src = url + '/' + post.Picture;
         img.alt = post.Name;

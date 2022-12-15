@@ -47,12 +47,12 @@ getCategories();
 // add existing post data to form
 const getPost = async (id) => {
   try {
-    // const options = {
-    //   headers: {
-    //     Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-    //   },
-    // };
-    const response = await fetch(url + '/post/' + id);
+    const options = {
+      headers: {
+        Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+      },
+    };
+    const response = await fetch(url + '/post/' + id, options);
     const post = await response.json();
     console.log(post);
     const inputs = document.querySelectorAll('input');
@@ -71,7 +71,7 @@ const getPost = async (id) => {
   }
 };
 
-getPost(4);
+getPost(id);
 
 // submit modify form
 formContent.addEventListener('submit', async (evt) => {
@@ -82,10 +82,13 @@ formContent.addEventListener('submit', async (evt) => {
       }
     const fetchOptions = {
         method: 'PUT',
+        headers: {
+            Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+        },
         body: fd,
     };
     console.log(fetchOptions);
-    const response = await fetch(url + '/post/' + 4 , fetchOptions);
+    const response = await fetch(url + '/post/' + id , fetchOptions);
     const json = await response.json();
     if (json.error) {
       alert(json.error.message);
@@ -93,5 +96,5 @@ formContent.addEventListener('submit', async (evt) => {
       alert(json.message);
     }
     console.log('response', json);
-    // location.href = url + 'profile.html';
+    location.href = url + 'post.html?id=' + id;
 });
