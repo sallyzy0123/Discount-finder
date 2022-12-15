@@ -29,6 +29,22 @@ const getPostById = async (res, postId) => {
     }
 };
 
+// const getPostsByUserId =async (res, userId) => {
+//     try {
+//         const sql = 'select Name, Description, Location, Picture, OriginalPrice, DiscountedPrice, CategoryName, ' +
+//             'post.CategoryId, Date, Username, Photo ' +
+//             'from post join category on post.CategoryId = category.CategoryId ' +
+//             'join user on post.UserId = user.UserId ' +
+//             'where post.UserId like ?';
+//         const [rows] = await promisePool.query(sql, [userId]);
+//         console.log('getting posts by user', rows);
+//         return rows;
+//       } catch (e) {
+//         console.error("error", e.message);
+//         res.status(500).send(e.message);
+//       }
+// }
+// new
 const getPostsByUserId =async (res, userId) => {
     try {
         const sql = 'select user.Username, user.Photo, user.Email, Name, Description, Location, Picture, OriginalPrice, ' +
@@ -36,7 +52,7 @@ const getPostsByUserId =async (res, userId) => {
             'post.CategoryId, Date, Username, Photo ' +
             'from post join category on post.CategoryId = category.CategoryId ' +
             'join user on post.UserId = user.UserId ' +
-            'where post.UserId like ?';
+            'where post.UserId = ?';
         const [rows] = await promisePool.query(sql, [userId]);
         console.log('getting posts by user', rows);
         return rows;
