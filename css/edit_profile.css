@@ -4,12 +4,7 @@ body {
     justify-content: center;
     align-items: center;
   }
-  /* section {
-    height: 1020px;
-    width: 375px;
-    border: 1px solid #ccc;
-    overflow-y: scroll;
-  } */
+
   header {
     display: flex;
     justify-content: center;
@@ -38,10 +33,7 @@ body {
     font-size: 1.5rem;
     
   }
-  /* .header_description {
-    font-size: 0.75rem;
-    margin-bottom: 20px;
-  } */
+
   .form_label {
     display: inline-block;
     margin-bottom: 0.25rem;

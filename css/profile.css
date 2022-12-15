@@ -40,11 +40,8 @@ img {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 30px;
-    /* margin-left: 3rem; */
  }
-.logo {
-    /* width: 20rem; */
-}
+
 .log_out_button {
     border: none;
     background-color: #ffffff00;
