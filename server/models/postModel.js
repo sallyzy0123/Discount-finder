@@ -29,21 +29,7 @@ const getPostById = async (res, postId) => {
     }
 };
 
-// const getPostsByUserId =async (res, userId) => {
-//     try {
-//         const sql = 'select Name, Description, Location, Picture, OriginalPrice, DiscountedPrice, CategoryName, ' +
-//             'post.CategoryId, Date, Username, Photo ' +
-//             'from post join category on post.CategoryId = category.CategoryId ' +
-//             'join user on post.UserId = user.UserId ' +
-//             'where post.UserId like ?';
-//         const [rows] = await promisePool.query(sql, [userId]);
-//         console.log('getting posts by user', rows);
-//         return rows;
-//       } catch (e) {
-//         console.error("error", e.message);
-//         res.status(500).send(e.message);
-//       }
-// }
+
 // new
 const getPostsByUserId =async (res, userId) => {
     try {
@@ -78,15 +64,16 @@ const addPost = async (post, userId, res) => {
     }
 };
 
-const deletePostById = async (postId, user, role, res) => {
+const deletePostById = async (postId, userId, role, res) => {
     try {
         if (role === 0) {
             const [rows] = await promisePool.
             query('delete from post where PostId = ?', [postId]);
             return rows;
         } else {
+            
             const [rows] = await promisePool.
-            query("delete from Post where PostId = ? and user = ?", [postId, user]);
+            query("delete from Post where PostId = ? and UserId = ?", [postId, userId]);
             return rows;
         }
     } catch (e) {
@@ -95,23 +82,23 @@ const deletePostById = async (postId, user, role, res) => {
     }
 };
 
-const updatePostById = async (post, user, role, res) => {
+const updatePostById = async (post, userid, role, res) => {
     try {
         console.log('Modifying post:', post);
         if (role === 0) {
-            const sql = 'update Post set ' +
+            const sql = 'update post set ' +
                 'CategoryId = ?, Name = ?, Description = ?, Location = ?, Picture = ?, OriginalPrice = ?, DiscountedPrice = ?' +
                 'where PostId = ?';
-            const values = [post.CategoryId, post.Name, post.Description, post.Location, post.Picture,
-                post.OriginalPrice, post.DiscountedPrice, post.PostId];
+            const values = [post.Category, post.Name, post.Description, post.Location, post.Picture,
+                post.OriginalPrice, post.DiscountedPrice, post.id];
             const [rows] = await promisePool.query(sql, values)
             return rows;
         } else {
-            const sql = 'update Post set ' +
+            const sql = 'update post set ' +
                 'CategoryId = ?, Name = ?, Description = ?, Location = ?, Picture = ?, OriginalPrice = ?, DiscountedPrice = ?' +
-                'where PostId = ? and userId = ?';
-            const values = [post.CategoryId, post.name, post.description, post.location, post.Picture,
-                post.OriginalPrice, post.DiscountedPrice, post.PostId, user.UserId];
+                'where PostId = ? and UserId = ?';
+            const values = [post.Category, post.Name, post.Description, post.Location, post.Picture,
+                post.OriginalPrice, post.DiscountedPrice, post.id, userid];
             const [rows] = await promisePool.query(sql, values);
             return rows;
         }

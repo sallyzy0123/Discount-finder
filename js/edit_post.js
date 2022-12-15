@@ -96,5 +96,7 @@ formContent.addEventListener('submit', async (evt) => {
       alert(json.message);
     }
     console.log('response', json);
-    location.href = url + 'post.html?id=' + id;
+    
+    location.href = 'post.html?id=' + id;
+    
 });

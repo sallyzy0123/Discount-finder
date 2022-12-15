@@ -43,6 +43,7 @@ const modifyUser = async (req, res) => {
         res.status(404).json({message: 'no changes made'});
     }
 };
+
 const deleteUser = async (req, res) => {
     const result =  await userModel.deleteUserById(req.params.userId, res);
     console.log ('user deleted', result);
