@@ -1,6 +1,6 @@
 'use strict'
 
-const url = 'http://localhost:3000';
+const url = 'https://discount-finder.northeurope.cloudapp.azure.com';
 
 // select existing html elements
 const forthRow = document.querySelector('.forth_row');

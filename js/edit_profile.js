@@ -1,5 +1,5 @@
 'use strict';
-const url = 'http://localhost:3000'; // change url when uploading to server
+const url = 'https://discount-finder.northeurope.cloudapp.azure.com'; // change url when uploading to server
 
 // select existing html elements
 const formContent = document.querySelector('#form_content');
