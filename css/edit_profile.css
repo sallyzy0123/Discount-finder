@@ -31,9 +31,7 @@ body {
     margin: 0;
     margin-bottom: 1rem;
     font-size: 1.5rem;
-    
   }
-
   .form_label {
     display: inline-block;
     margin-bottom: 0.25rem;
@@ -54,8 +52,12 @@ body {
     border-radius: 0.25rem;
     padding: 0.5rem;
   }
+a {
+  display: flex;
+  justify-content: center;
+}
   @media screen and (min-width: 375px) {
     #logo {
-      width: 50%; 
+      width: 20%; 
     }
  }

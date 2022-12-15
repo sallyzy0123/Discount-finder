@@ -249,4 +249,14 @@ hr {
         color: gray;
         /* font-size: 3rem;; */
      }
+     .profile-user-name {
+        display: inline-block;
+        margin:1rem auto;
+        font-size: 1.5rem;
+        font-weight: 300;
+    }
+    .profile-user-email {
+        font-size: 1.5rem;
+        margin:1rem auto;
+    }
 }
