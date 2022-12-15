@@ -8,15 +8,15 @@ const profile = document.querySelector('.profile');
 // get user data
 const user = JSON.parse(sessionStorage.getItem('user'));
 
-// get query parameter
-const getQParam = (param) => {
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
-  return urlParams.get(param);
-};
-
-// get id from address
-const userId = getQParam('id');
+// // get query parameter
+// const getQParam = (param) => {
+//   const queryString = window.location.search;
+//   const urlParams = new URLSearchParams(queryString);
+//   return urlParams.get(param);
+// };
+//
+// // get id from address
+// const userId = getQParam('id');
 
 // create post cards
 const createPostCards = (posts) => {
@@ -48,14 +48,14 @@ const createPostCards = (posts) => {
         })
 
         // remove the post by click the bin icon
-        i2.addEventListener('clikc', () => {
+        i2.addEventListener('click', () => {
             // remove this post and update the page
         })
 
         // add the image
         const img = document.createElement('img');
         img.className = "gallery-image";
-        // need to check 
+        // need to check
         //img.src = url + 'thumbnails/' + posts[i].picutre;
         img.src = post.Picture;
         img.alt = post.Name;
@@ -112,15 +112,15 @@ const createUserProfileCard = (users) => {
   div1.className = "profile-image";
   const img1 = document.createElement('img');
   img1.className = "profileImage";
-  img1.src = users[2].photo;
-  img1.alt = users[2].username;
+  img1.src = users[user.UserId].photo;
+  img1.alt = users[user.UserId].username;
 
   // add the user info section
   const div2 = document.createElement('div');
   div2.className = "profile-user-settings";
   const p1 = document.createElement('p');
   p1.className = "profile-user-name";
-  p1.innerHTML = users[2].username;
+  p1.innerHTML = users[user.user].username;
   const p2 = document.createElement('p');
   p2.className = "profile-user-email";
   p2.innerHTML = users[2].email;
@@ -157,9 +157,9 @@ const getPosts = async () => {
       console.log(e.message);
   }
 };
-getPosts(2);
+getPosts(user.UserId);
 
-// here is get user profile 
+// here is get user profile
 // need to check
 const getUsers = async () => {
   try {

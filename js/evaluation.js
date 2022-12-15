@@ -5,8 +5,6 @@ const dislike = document.querySelector('.dislike');
 const likesNum = document.querySelector('.like-number');
 const dislikesNum = document.querySelector('.dislike-number');
 
-//TODO: like and dislike buttons
-
 function showLikesDislikes(evaluations) {
     let likes = 0;
     let dislikes = 0;

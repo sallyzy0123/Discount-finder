@@ -28,7 +28,7 @@ const a = document.createElement('a');
 const username = document.querySelector('.post-username');
 const userIcon = document.querySelector('.user-icon');
 const deleteBtn = document.querySelector('#delete-icon');
-const editIcon = document.querySelector('.bigger-icon');
+const editIcon = document.querySelector('#edit-icon');
 
 
 // add existing cat data to form
@@ -40,6 +40,7 @@ const getPost = async (id) => {
     };
     const response = await fetch(url + '/post/' + id, fetchOptions);
     const post = await response.json();
+
     a.href = url + '/category/' + post.CategoryId;
     a.textContent = post.CategoryName;
     categoryName.appendChild(a);
@@ -52,12 +53,13 @@ const getPost = async (id) => {
     postDescription.innerHTML = post.Description;
     postImage.src = url + '/' + post.Picture;
     username.innerHTML = post.Username;
-    userIcon.src = post.Photo;
+    userIcon.src = url + '/' + post.Photo;
     console.log(post);
 
     if (post.UserId === user.UserId || user.role === 0) {
+
         editIcon.addEventListener('click',async () => {
-            location.href = '../html/edit_post.html?id=' + post_id;
+            location.href = '../html/edit_post.html?id=' + id;
         });
 
         deleteBtn.addEventListener('click', async () => {
@@ -68,7 +70,7 @@ const getPost = async (id) => {
                 },
             };
             try {
-                const response = await fetch(url + '/post/' + post.PostId, fetchOptions);
+                const response = await fetch(url + '/post/' + id, fetchOptions);
                 const json = await response.json();
                 console.log('delete response', json);
                 location.href = '../html/main_page.html';
@@ -78,6 +80,7 @@ const getPost = async (id) => {
         });
     } else {
         deleteBtn.style.visibility = "hidden";
+        editIcon.style.visibility = "hidden";
     }
 };
 

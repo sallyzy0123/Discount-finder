@@ -91,6 +91,7 @@ PriceDesc.addEventListener('click', (e) => {
 // create post cards
 const createPostCards = (posts) => {
     posts.forEach((post) => {
+        console.log(post)
         const div1 = document.createElement('div');
         div1.className = "gallery-item";
         div1.tabIndex = "0";

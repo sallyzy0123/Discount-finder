@@ -5,7 +5,7 @@ const promisePool = pool.promise();
 const getAllPosts = async (res) => {
     try {
         const [rows] = await promisePool.
-        query('select Name, CategoryId, Location, Picture, OriginalPrice, DiscountedPrice, Description, Date from post');
+        query('select * from post');
         return rows;
     } catch (e) {
         console.error("error", e.message);
@@ -31,7 +31,8 @@ const getPostById = async (res, postId) => {
 
 const getPostsByUserId =async (res, userId) => {
     try {
-        const sql = 'select Name, Description, Location, Picture, OriginalPrice, DiscountedPrice, CategoryName, ' +
+        const sql = 'select user.Username, user.Photo, user.Email, Name, Description, Location, Picture, OriginalPrice, ' +
+            'DiscountedPrice, CategoryName, ' +
             'post.CategoryId, Date, Username, Photo ' +
             'from post join category on post.CategoryId = category.CategoryId ' +
             'join user on post.UserId = user.UserId ' +
@@ -45,12 +46,12 @@ const getPostsByUserId =async (res, userId) => {
       }
 }
 
-const addPost = async (post, res) => {
+const addPost = async (post, userId, res) => {
     try {
         const date = new Date().toJSON().slice(0, 10);
         const sql = 'insert into post values (null, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
         const values =
-            [post.UserId, post.CategoryId, post.Name, post.Description, post.Location, post.Picture, post.OriginalPrice,
+            [userId, post.CategoryId, post.Name, post.Description, post.Location, post.Picture, post.OriginalPrice,
                 post.DiscountedPrice, date];
         console.log(date);
         const [result] = await promisePool.query(sql, values);

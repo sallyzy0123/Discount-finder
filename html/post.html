@@ -8,14 +8,15 @@
     <script defer src="../js/serialize.js"></script>
     <script defer src="../js/post.js"></script>
     <script defer src="../js/comments.js"></script>
-    <script defer src="../js/evaluation.js"></script>
     <script src="https://kit.fontawesome.com/9571e53263.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 
 <header>
     <div class="page-header">
-        <img src="../images/logo.svg" alt="Website logo" width="35%" />
+        <a href="main_page.html">
+            <img src="../images/logo.svg" alt="Website logo" width="35%" />
+        </a>
         <button
                 class="sign_in_button"
                 type="text">
@@ -57,9 +58,8 @@
                         <h3 class="post-name">Post name</h3>
                     </div>
                     <div class="post-options">
-                        <a class="bigger-icons" href="#">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </a>
+
+                        <span id="edit-icon" class="bigger-icons"><i class="fa-solid fa-pen-to-square"></i></span>
                         <span id="delete-icon" class="bigger-icons"><i class="fa-solid fa-trash-can"></i></span>
                     </div>
                 </div>
@@ -117,17 +117,6 @@
                         </span>
                         <span class="comment-number">0</span>
                     </div>
-                    <div class="like">
-                        <span class="bigger-icons">
-                            <i class="fa-solid fa-thumbs-up"></i>
-                        </span>
-                        <span class="like-number">0</span>
-                    </div>
-                    <div class="dislike">
-                        <span class="bigger-icons">
-                            <i class="fa-solid fa-thumbs-down"></i>
-                        </span>
-                        <span class="dislike-number">0</span>
                     </div>
 
                 </div>
