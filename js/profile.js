@@ -5,8 +5,18 @@ const url = 'http://localhost:3000';
 const gallery = document.querySelector('.gallery');
 const profile = document.querySelector('.profile');
 
-// get user data 
+// get user data
 const user = JSON.parse(sessionStorage.getItem('user'));
+
+// get query parameter
+const getQParam = (param) => {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  return urlParams.get(param);
+};
+
+// get id from address
+const userId = getQParam('id');
 
 // create post cards
 const createPostCards = (posts) => {
@@ -143,10 +153,11 @@ const getPosts = async () => {
       const posts = await response.json();
       console.log(posts);
       createPostCards(posts);
-    } catch (e) {
+  } catch (e) {
       console.log(e.message);
-    }
+  }
 };
+getPosts(2);
 
 // here is get user profile 
 // need to check
@@ -167,4 +178,4 @@ const getUsers = async () => {
 }
 
 getUsers();
-getPosts();
+// getPosts();

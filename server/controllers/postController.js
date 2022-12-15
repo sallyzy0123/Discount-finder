@@ -19,6 +19,15 @@ const getPost = async (req, res) => {
     }
 };
 
+const getPostsByUserId = async (req, res) => {
+    const post = await postModel.getPostsByUserId(res, req.params.userId);
+    if (post) {
+        res.json(post);
+    } else {
+        res.sendStatus(404);
+    }
+};
+
 const createPost = async (req, res) => {
     console.log('Creating a new post:', req.body);
     const newPost = req.body;
@@ -39,6 +48,7 @@ const deletePost = async (req, res) => {
 
 const modifyPost = async (req, res) => {
     const post = req.body;
+    post.Picture = req.file.filename;
     if (req.params.postId) {
         post.id = req.params.postId;
     }
@@ -53,6 +63,7 @@ const modifyPost = async (req, res) => {
 module.exports = {
     getPosts,
     getPost,
+    getPostsByUserId,
     createPost,
     deletePost,
     modifyPost

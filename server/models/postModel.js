@@ -5,7 +5,7 @@ const promisePool = pool.promise();
 const getAllPosts = async (res) => {
     try {
         const [rows] = await promisePool.
-        query('select * from post');
+        query('select Name, CategoryId, Location, Picture, OriginalPrice, DiscountedPrice, Description, Date from post');
         return rows;
     } catch (e) {
         console.error("error", e.message);
@@ -28,6 +28,22 @@ const getPostById = async (res, postId) => {
         res.status(500).send(e.message);
     }
 };
+
+const getPostsByUserId =async (res, userId) => {
+    try {
+        const sql = 'select Name, Description, Location, Picture, OriginalPrice, DiscountedPrice, CategoryName, ' +
+            'post.CategoryId, Date, Username, Photo ' +
+            'from post join category on post.CategoryId = category.CategoryId ' +
+            'join user on post.UserId = user.UserId ' +
+            'where post.UserId like ?';
+        const [rows] = await promisePool.query(sql, [userId]);
+        console.log('getting posts by user', rows);
+        return rows;
+      } catch (e) {
+        console.error("error", e.message);
+        res.status(500).send(e.message);
+      }
+}
 
 const addPost = async (post, res) => {
     try {
@@ -69,14 +85,16 @@ const updatePostById = async (post, user, role, res) => {
             const sql = 'update Post set ' +
                 'CategoryId = ?, Name = ?, Description = ?, Location = ?, Picture = ?, OriginalPrice = ?, DiscountedPrice = ?' +
                 'where PostId = ?';
-            const values = [post.categoryId, post.name, post.description, post.location, post.picture, post.origPrice, post.discPrice, post.id];
+            const values = [post.CategoryId, post.Name, post.Description, post.Location, post.Picture,
+                post.OriginalPrice, post.DiscountedPrice, post.PostId];
             const [rows] = await promisePool.query(sql, values)
             return rows;
         } else {
             const sql = 'update Post set ' +
                 'CategoryId = ?, Name = ?, Description = ?, Location = ?, Picture = ?, OriginalPrice = ?, DiscountedPrice = ?' +
                 'where PostId = ? and userId = ?';
-            const values = [post.categoryId, post.name, post.description, post.location, post.picture, post.origPrice, post.discPrice, post.id, user.userId];
+            const values = [post.CategoryId, post.name, post.description, post.location, post.Picture,
+                post.OriginalPrice, post.DiscountedPrice, post.PostId, user.UserId];
             const [rows] = await promisePool.query(sql, values);
             return rows;
         }
@@ -89,6 +107,7 @@ const updatePostById = async (post, user, role, res) => {
 module.exports = {
     getAllPosts,
     getPostById,
+    getPostsByUserId,   
     addPost,
     deletePostById,
     updatePostById

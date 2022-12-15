@@ -28,6 +28,7 @@ const a = document.createElement('a');
 const username = document.querySelector('.post-username');
 const userIcon = document.querySelector('.user-icon');
 const deleteBtn = document.querySelector('#delete-icon');
+const editIcon = document.querySelector('.bigger-icon');
 
 
 // add existing cat data to form
@@ -54,7 +55,11 @@ const getPost = async (id) => {
     userIcon.src = post.Photo;
     console.log(post);
 
-    if (post.UserId == user.UserId) {
+    if (post.UserId === user.UserId || user.role === 0) {
+        editIcon.addEventListener('click',async () => {
+            location.href = '../html/edit_post.html?id=' + post_id;
+        });
+
         deleteBtn.addEventListener('click', async () => {
             const fetchOptions = {
                 method: 'DELETE',

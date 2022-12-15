@@ -21,18 +21,18 @@ const passport = require("../utils/passport");
 // };
 
 const upload = multer({ dest: 'uploads/'
-    // , fileFilter
+// , fileFilter
 });
 
 router.get('/', postController.getPosts)
     .get('/:postId', postController.getPost)
+    .get('/user/:userId', postController.getPostsByUserId)
     .post('/', passport.authenticate('jwt', {session: false}),
         upload.single('Picture'),
-        // body('name').isLength({min: 3}).trim().escape(),
-        // body('description').isDate(),
-        // body('category').isFloat({min: 0.1, max: 30}),
         postController.createPost)
-    .put('/:postId', passport.authenticate('jwt', {session: false}), postController.modifyPost)
-    .delete('/:postId', passport.authenticate('jwt', {session: false}), postController.deletePost);
+    .put('/:postId', passport.authenticate('jwt', {session: false}),
+        upload.single('Picture'),
+        postController.modifyPost)
+    .delete('/:postId', postController.deletePost);
 
 module.exports = router;

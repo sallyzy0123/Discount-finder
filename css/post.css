@@ -1,201 +1,310 @@
-:root {
-    font-size: 10px;
- }
 * {
-   box-sizing: border-box;
-   margin: 0;
-}
-main {
-   height: 100%;
-   display: flex;
-   flex-direction: column;
+    box-sizing: border-box;
+    margin: 0;
 }
 
-<<<<<<< HEAD
-.post-header-options {
-    display: flex;
-    justify-content: space-between;
-}
-
-.post-options {
-    display: flex;
-    align-self: center;
-}
-
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 375px) {
     main {
         height: 100vh;
         display: flex;
         flex-direction: column;
     }
-=======
-.post-header {
-   display: flex;
-   flex-direction: row-reverse;
-   justify-content: flex-end;
-   padding: 10px 10px 0 10px;
-}
->>>>>>> laurenthat
 
-.post-info {
-   padding: 0 10px;
-   display: flex;
-   flex-direction: column;
-   justify-content: space-around;
-}
-
-.post-user img,
-.comment-user img {
-   max-width: 50px;
-}
-
-.post-content {
-   padding: 10px;
-}
-
-.post-main-content {
-   text-align: justify;
-}
-.post-image {
-    width: 10rem;
-}
-
-.post-title {
-   padding: 10px 0px 0;
-}
-
-.post-footer {
-   padding: 10px 20px;
-   display: flex;
-   justify-content: space-between;
-}
-
-.bigger-icons {
-   font-size: 1.5em;
-}
-
-.smaller-icons {
-   font-size: 0.7em;
-}
-
-form {
-   display: flex;
-   gap: 10px;
-   align-items: center;
-   padding: 10px;
-}
-
-textarea {
-   flex-grow: 4;
-   height: 150px;
-   padding: 10px;
-   border: 2px solid #ccc;
-   border-radius: 4px;
-   resize: none;
-}
-
-button {
-   flex-grow: 1;
-   height: 30%;
-}
-
-.comment-section {
-   padding: 10px 20px;
-   display: flex;
-   flex-direction: column;
-}
-
-.new-comment {
-   display: flex;
-}
-
-.comment-header {
-   padding: 10px;
-}
-
-.comment-user {
-   align-self: center;
-}
-
-.comment-info {
-   padding: 10px;
-   text-align: justify;
-   display: flex;
-   flex-direction: column;
-}
-
-.comment-details {
-   display: flex;
-   justify-content: space-between;
-   padding: 0 0 10px;
-}
-
-.tags {
-   display: flex;
-   justify-content: space-evenly;
-}
-
-.location-name,
-.category-name {
-   display: inline-flex;
-}
-
-.post-main-content {
-   display: flex;
-   padding: 10px;
-   flex-direction: column;
-}
-
-.price {
-   display: flex;
-}
-
-.price-right-side {
-   display: flex;
-   flex-direction: column;
-   justify-content: space-evenly;
-   padding: 10px;
-}
-
-.discounted-price,
-.currency-sign {
-   font-size: 3em;
-}
-
-.currency-sign {
-   display: inline;
-}
-
-<<<<<<< HEAD
-    .page-header {
-        padding: 10px;
+    .post-header {
         display: flex;
-        align-content: center;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        padding: 10px 10px 0 10px;
+    }
+
+    .post-info {
+        padding: 0 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .post-user img, .comment-user img {
+        max-width: 50px;
+    }
+
+    .post-content {
+        padding: 10px;
+    }
+
+    .post-main-content {
+        text-align: justify;
+    }
+
+    .post-title {
+        padding: 10px 0px 0 ;
+    }
+
+    .post-footer {
+        padding: 10px 20px;
+        display: flex;
         justify-content: space-between;
     }
 
-    .sign_in_button {
-        align-self: center;
-        justify-self: end;
-        max-width: fit-content;
+    .bigger-icons {
+        font-size: 1.5em;
     }
-=======
-.discount {
-   display: flex;
-   align-content: space-evenly;
-   background-color: yellow;
-   max-width: fit-content;
-}
->>>>>>> laurenthat
 
-.original-price {
-   display: inline-flex;
-   font-size: 0.7em;
-}
-@media screen and (min-width: 375px) {
-    main {
-        width: 1rem;
+    .smaller-icons {
+        font-size: 0.7em;
+    }
+
+    form {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        padding: 10px;
+    }
+
+    textarea {
+        flex-grow: 4;
+        height: 150px;
+        padding: 10px;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        resize: none;
+    }
+
+    button {
+        flex-grow: 1;
+        height: 30%;
+    }
+
+    .comment-section {
+        padding: 10px 20px;
         display: flex;
         flex-direction: column;
-     }
+    }
+
+    .new-comment {
+        display: flex;
+    }
+
+    .comment-header {
+        padding: 10px;
+    }
+
+    .comment-user {
+        align-self: center;
+    }
+
+    .comment-info {
+        padding: 10px;
+        text-align: justify;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .comment-details {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 0 10px;
+    }
+
+    .tags {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .location-name, .category-name {
+        display: inline-flex;
+    }
+
+    .post-main-content {
+        display: flex;
+        padding: 10px;
+        flex-direction: column;
+    }
+
+    .price {
+        display: flex;
+    }
+
+    .price-right-side {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding: 10px;
+    }
+
+    .discounted-price, .currency-sign {
+        font-size: 3em;
+    }
+
+    .currency-sign {
+        display: inline;
+    }
+
+    .discount {
+        display: flex;
+        align-content: space-evenly;
+        background-color: yellow;
+        max-width: fit-content;
+    }
+
+    .original-price {
+        display: inline-flex;
+        font-size: 0.7em;
+    }
+}
+
+@media screen and (min-width: 375px) {
+    main {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .post-header {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        padding: 10px 10px 0 10px;
+    }
+
+    .post-info {
+        padding: 0 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .post-user img, .comment-user img {
+        max-width: 50px;
+    }
+
+    .post-content {
+        padding: 10px;
+    }
+
+    .post-main-content {
+        text-align: justify;
+    }
+    .post-image {
+        display: flex;
+        max-width: 500px;
+    }
+
+    .post-title {
+        padding: 10px 0px 0 ;
+    }
+
+    .post-footer {
+        /* display: none; */
+        padding: 10px 20px;
+        border: 20px;
+        display: flex;
+    }
+
+    .bigger-icons {
+        font-size: 1.5em;
+        border: 20px;
+    }
+
+    .smaller-icons {
+        font-size: 0.7em;
+    }
+
+    form {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        padding: 10px;
+    }
+
+    textarea {
+        flex-grow: 4;
+        height: 150px;
+        padding: 10px;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        resize: none;
+    }
+
+    button {
+        flex-grow: 1;
+        height: 30%;
+    }
+
+    .comment-section {
+        padding: 10px 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .new-comment {
+        display: flex;
+    }
+
+    .comment-header {
+        padding: 10px;
+    }
+
+    .comment-user {
+        align-self: center;
+    }
+
+    .comment-info {
+        padding: 10px;
+        text-align: justify;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .comment-details {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 0 10px;
+    }
+
+    .tags {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .location-name, .category-name {
+        display: inline-flex;
+    }
+
+    .post-main-content {
+        display: flex;
+        padding: 10px;
+        flex-direction: column;
+    }
+
+    .price {
+        display: flex;
+    }
+
+    .price-right-side {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding: 10px;
+    }
+
+    .discounted-price, .currency-sign {
+        font-size: 3em;
+    }
+
+    .currency-sign {
+        display: inline;
+    }
+
+    .discount {
+        display: flex;
+        align-content: space-evenly;
+        background-color: yellow;
+        max-width: fit-content;
+    }
+
+    .original-price {
+        display: inline-flex;
+        font-size: 0.7em;
+    }
 }

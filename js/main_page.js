@@ -13,6 +13,7 @@ const profileBtn = document.createElement('button');
 const loginLink = document.createElement('a');
 const profileLink = document.createElement('a');
 
+const plusIcon = document.querySelector('.plus-icon');
 let posts = [];
 
 // get user data 
@@ -33,6 +34,9 @@ if (user) {
     navBtns.appendChild(loginBtn);
 }
 
+plusIcon.addEventListener('click', (e) => {
+    location.href = "./new_post.html";
+})
 // the search bar
 searchButton.addEventListener("click", (e) => {
     // get the input value
@@ -50,6 +54,39 @@ searchButton.addEventListener("click", (e) => {
     forthRow.innerHTML='';
     createPostCards(filteredPosts);
 })
+
+
+// sort bar
+const dateAsc = document.querySelector('.sort-date-asc');
+dateAsc.addEventListener('click', (e) => {
+    const dateAscPosts = posts.sort( (a, b) => (a.Date > b.Date) ? 1 : -1);
+    console.log(dateAscPosts);
+    forthRow.innerHTML='';
+    createPostCards(dateAscPosts);
+});
+const dateDesc = document.querySelector('.sort-date-desc');
+dateDesc.addEventListener('click', (e) => {
+    const dateDescPosts = posts.sort( (a, b) => (a.Date > b.Date) ? 1 : -1);
+    console.log(dateDescPosts);
+    forthRow.innerHTML='';
+    createPostCards(dateDescPosts);
+});
+const PriceAsc = document.querySelector('.sort-price-asc');
+PriceAsc.addEventListener('click', (e) => {
+    const PriceAscPosts = posts.sort( (a, b) => (a.DiscountedPrice > b.DiscountedPrice) ? 1 : -1);
+    console.log(PriceAscPosts);
+    forthRow.innerHTML='';
+    createPostCards(PriceAscPosts);
+});
+const PriceDesc = document.querySelector('.sort-price-desc');
+PriceDesc.addEventListener('click', (e) => {
+    const PriceDescPosts = posts.sort( (a, b) => (a.DiscountedPrice < b.DiscountedPrice) ? 1 : -1);
+    console.log(PriceDescPosts);
+    forthRow.innerHTML='';
+    createPostCards(PriceDescPosts);
+});
+
+
 
 // create post cards
 const createPostCards = (posts) => {
@@ -148,6 +185,7 @@ const getPosts = async () => {
       const response = await fetch(url + '/post', fetchOptions);
       posts = await response.json();
       createPostCards(posts);
+      console.log(posts);
     } catch (e) {
       console.log(e.message);
     }
@@ -156,7 +194,7 @@ const getPosts = async () => {
 getPosts();
 
 const createCategoryOptions = (categories) => {
-    // clear user list
+    // clear category list
     categoryList.innerHTML = '';
     categories.forEach((category) => {
         console.log(category)
@@ -165,7 +203,15 @@ const createCategoryOptions = (categories) => {
         const a = document.createElement('a');
         a.href = url + '/category/' + category.categoryId;
         a.textContent = category.categoryName;
-        //TODO: same page as main, but for categories
+
+        // filter the category by clicking the filter bar
+        option.addEventListener('click', (e) => {
+            console.log(a.href);
+            const postlist = posts.filter(post => post.CategoryId == category.categoryId);
+            console.log(postlist);
+            forthRow.innerHTML='';
+            createPostCards(postlist);
+        });
         option.classList.add('border');
         option.appendChild(a);
         categoryList.appendChild(option);

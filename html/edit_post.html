@@ -4,35 +4,24 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../css/new_post_page.css" rel="stylesheet" />
-    <script defer src="/js/check-login.js"></script>
-    <script defer src="../js/serialize.js"></script>
-    <script defer src="../js/new-post.js"></script>
+    <link href="../css/edit_post.css" rel="stylesheet" />
     <title>Document</title>
 </head>
 <body>
-<section>
-    <header>
-        <img src="../images/logo.svg" alt="Website logo" width="100%" />
-    </header>
-    <div class="container">
 
 <div class="container">
-    <header>
-        <img id="logo" src="../images/logo.svg" alt="Website logo" width="100%" />
-      </header>
 
     <div class="forms">
         <div class="form-wrapper">
-            <h3 id="post_add">Add a post</h3>
-            <form action="http://localhost:3000/post" method="post" class="light-border"
-                  enctype="multipart/form-data" id="addPostForm">
+            <h3>Edit your post</h3>
+            <form action="http://localhost:3000/post" method="put" class="light-border"
+                  enctype="multipart/form-data" id="editPostForm">
                 <label class="form_label">Name of product:</label>
                 <input class="border" type="text" name="Name" required placeholder="Name">
                 <label class="form_label">Product location:</label>
                 <input class="border" type="text" name="Location" required placeholder="Location" />
                 <label class="form_label">Category:</label>
-                <select class="border add-category" required name="CategoryId">
+                <select class="border add-category" required name="Category">
                     <option value="">Select category</option>
                 </select>
                 <label class="form_label">Discounted price:</label>
@@ -45,14 +34,15 @@
                 <input class="border" type="file" name="Picture" accept="image/*"
                        required placeholder="Choose file">
                 <label class="form_label">Add a product description:</label> <br>
-                <textarea name="Description" maxlength="1000"
+                <textarea name="Description" maxlength="1000" required
                           placeholder="Write a product description" spellcheck="true"></textarea>
                 <button class="border" type="submit">Upload</button>
             </form>
         </div>
-
     </div>
-</section>
+
+    <script src="../js/edit_post.js"></script>
+</div>
 
 </body>
 </html>
