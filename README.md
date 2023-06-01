@@ -2,7 +2,7 @@
 ## Description
 Discount finder is a web application designed to help users find discounts and save money.
 ## Installation
-Clone the repository by git clone https://github.com/laurenthat/Discount-finder.git
+Clone the repository by git clone https://github.com/sallyzy0123/Discount-finder.git
 ## Features
  - logged in users are allowed to upload a post of a discount. This post would include product name, location, picture, short description, original price as well as discounted price
  - each post can receive feedback (like, dislike, comment) from logged in users
